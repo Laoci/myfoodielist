@@ -1,9 +1,10 @@
 <h1>Search Result</h1>
 
-<%# <div class="container"> %>
-  <div class="resto-grid">
-      <% @restaurants.each do |restaurant| %>
-        <div class="card-resto">
+<div class="container">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+  <% @restaurants.each do |restaurant| %>
+    <%= link_to restaurant_path(restaurant) do %>
+      <div class="card-resto mx-auto">
         <img src="https://source.unsplash.com/400x250/?restaurant" />
           <%# raise %>
           <div>
@@ -15,5 +16,7 @@
           </div>
         </div>
       <% end %>
+    <% end %>
   </div>
-<%# </div> %>
+</div>
+</div>
