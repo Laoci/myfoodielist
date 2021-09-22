@@ -1,0 +1,19 @@
+<h1>Search Result</h1>
+
+<%# <div class="container"> %>
+  <div class="resto-grid">
+      <% @restaurants.each do |restaurant| %>
+        <div class="card-resto">
+        <img src="https://source.unsplash.com/400x250/?restaurant" />
+          <%# raise %>
+          <div>
+            <h2 class="ml-2"><%= restaurant.name %></h2>
+            <p>Restaurant address: <strong><%= restaurant.address %></strong></p>
+            <p>Postal code: <strong><%= restaurant.postal_code %></strong></p>
+            <p>Cuisine type: <strong><%= restaurant.genre %></strong></p>
+            <%# <%= link_to "Add a review", new_shop_review_path(shop) %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+<%# </div> %>
