@@ -1,1 +1,67 @@
 // Specific CSS for your home-page
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 250px 0;
+  max-height: 30%;
+}
+
+body h2 {
+  padding: 24px;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: 0.7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+p.alert-main {
+  font-size: 20px;
+  color: white;
+  opacity: 1;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card-shop img {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.card-shop h3 {
+  font-size: 100%
+}
+
+.card-shop p {
+  font-size: 0.75em;
+}

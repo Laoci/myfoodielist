@@ -1,2 +1,69 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- Navigation -->
+<nav class="navbar navbar-light bg-light static-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">My Foodie List</a>
+    <div id='login_btn' class="btn btn-primary">Log In</div>
+  </div>
+</nav>
+<div class="banner" style="background-image: url('https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fHJlc3RhdXJhbnQlMjBzaG9wJTIwZnJvbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60')">
+  <div class="container">
+    <div class="wrap">
+      <%= simple_form_for :search, url: '/results', method: :get do |f| %>
+        <div class="d-flex search-form-control form-group">
+          <input class="form-control" type="text" name="query" id="query" placeholder="Search for restaurants in your favorite area of town" />
+          <button type="submit" class="searchButton">
+            <i class="fas fa-search "></i>
+          </button>
+        </div>
+        <% if flash[:alert].present? %>
+          <p class="alert alert-main"><%= alert %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<body>
+  <h2>Curated Lists For The Undecided</h2>
+  <section class="features-icons bg-light text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card-shop" style="width: 16rem;">
+            <img src="https://images.unsplash.com/photo-1571167366136-b57e07761625?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" class="card-img-top" alt="spanish food list" />
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-screen-desktop m-auto text-primary"></i>
+              </div>
+              <h3>Spanish</h3>
+              <p class="lead mb-0">Enjoy the best tapas and iberico</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card-shop" style="width: 16rem;">
+          <img src="https://images.unsplash.com/photo-1539755530862-00f623c00f52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fHJpY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="indonesian food list"/>
+              <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                <div class="features-icons-icon d-flex">
+                  <i class="icon-screen-desktop m-auto text-primary"></i>
+                </div>
+                <h3>Indonesian</h3>
+                <p class="lead mb-0">The search for the nicest nasi padang continues and thes line is to see</p>
+              </div>
+            </div>
+          </div>
+        <div class="col-lg-4">
+          <div class="card-shop" style="width: 16rem;">
+          <img src="https://images.unsplash.com/photo-1605464370799-719bc1bfba78?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZmF2b3VyaXRlJTIwaGVhcnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="die die must eat food list" />
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-screen-desktop m-auto text-primary"></i>
+              </div>
+              <h3>Die Die Must Eat!</h3>
+              <p class="lead mb-0">A list of our favourites!</p>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+</body>
