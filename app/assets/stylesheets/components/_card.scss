@@ -1,0 +1,62 @@
+.card-resto {
+  width: 360px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-top: 16px;
+}
+
+.card-resto>img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.resto-grid {
+  // background-size: cover;
+  // background-position: center;
+  // height: 150px;
+  // border-radius: 1px;
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  // align-items: center;
+  justify-content: space-around;
+  // width: 1600px;
+  // font-size: 22px;
+  // color: white;
+  // font-weight: bolder;
+  // text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.card-resto h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-resto p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 32px;
+}
+
+
+.card-resto .card-resto-infos {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-resto-infos .card-resto-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+// .container {
+//   width: 100%;
+// }
