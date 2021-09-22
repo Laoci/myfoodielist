@@ -3,4 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # Must have username
+  validates :username, presence: true
+
+  # Associations
+  has_many :lists
+  has_many :restaurant_lists, through: :lists
+  has_many :restaurants, through: :restaurant_lists
 end
