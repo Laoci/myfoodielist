@@ -5,4 +5,7 @@ Rails.application.routes.draw do
 
   # results routes
   get "results", to: "restaurants#index"
+
+  # restaurant routes
+  get "restaurants/:id", to: "restaurants#show", as: :restaurant
 end

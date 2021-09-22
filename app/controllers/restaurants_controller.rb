@@ -24,4 +24,8 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     render :new
   end
+
+  def show
+    @restaurant = Restaurant.find(params[:id])
+  end
 end
