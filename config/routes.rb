@@ -8,4 +8,9 @@ Rails.application.routes.draw do
 
   # restaurant routes
   get "restaurants/:id", to: "restaurants#show", as: :restaurant
+
+  # reviews route
+  resources :restaurants do
+    resources :reviews
+  end
 end
