@@ -1,19 +1,35 @@
-<h1>Search Result</h1>
+<div class="results-header">
+  <h1>Your Restaurant Suggestions. Click add to add to list.</h1>
+</div>
 
-<%# <div class="container"> %>
-  <div class="resto-grid">
-      <% @restaurants.each do |restaurant| %>
-        <div class="card-resto">
-        <img src="https://source.unsplash.com/400x250/?restaurant" />
-          <%# raise %>
-          <div>
-            <h2 class="ml-2"><%= restaurant.name %></h2>
-            <p>Restaurant address: <strong><%= restaurant.address %></strong></p>
-            <p>Postal code: <strong><%= restaurant.postal_code %></strong></p>
-            <p>Cuisine type: <strong><%= restaurant.genre %></strong></p>
-            <%# <%= link_to "Add a review", new_shop_review_path(shop) %>
+<div class="resultcontent">
+  <div class="container">
+    <div class="resto-grid">
+        <% @restaurants.each do |restaurant| %>
+          <div class="card-resto">
+          <img src="https://source.unsplash.com/400x250/?restaurant" />
+            <%# raise %>
+            <div>
+              <h2 class="ml-2"><%= restaurant.name %></h2>
+              <p>Restaurant address: <strong><%= restaurant.address %></strong></p>
+              <p>Postal code: <strong><%= restaurant.postal_code %></strong></p>
+              <p>Cuisine type: <strong><%= restaurant.genre %></strong></p>
+              <%# <%= link_to "Add a review", new_shop_review_path(shop) %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+    </div>
   </div>
-<%# </div> %>
+</div>
+
+<div class="resultsidebar">
+    <%# This is the list name based on the search by user %>
+  <div class="form-group">
+    <label for="nameoflist">Rename this List!</label>
+    <input type="text" class="form-control" id="namelistnew">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="addtolist">
+    <label class="form-check-label" for="addtolist">click on restaurant to add to list</label>
+  </div>
+</div>

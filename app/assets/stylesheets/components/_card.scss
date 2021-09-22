@@ -1,5 +1,5 @@
 .card-resto {
-  width: 360px;
+  width: 30%;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -7,7 +7,7 @@
 }
 
 .card-resto>img {
-  height: 200px;
+  height: 50%;
   width: 100%;
   object-fit: cover;
 }
@@ -17,9 +17,10 @@
   // background-position: center;
   // height: 150px;
   // border-radius: 1px;
-  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-wrap: wrap;
+  margin: 16px;
   // align-items: center;
   justify-content: space-around;
   // width: 1600px;
@@ -38,12 +39,12 @@
 .card-resto p {
   font-size: 12px;
   opacity: .7;
-  margin: 32px;
+  margin: 8px;
 }
 
 
 .card-resto .card-resto-infos {
-  padding: 8px;
+  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -57,6 +58,18 @@
   width: 40px;
 }
 
-// .container {
-//   width: 100%;
-// }
+.resultcontent {
+  float: left;
+  width: 70%;
+}
+
+.resultsidebar {
+  float: right;
+  width: 25%;
+  padding: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  margin-left: 616px;
+  border-radius: 8px;
+  border-style: dotted;
+}
