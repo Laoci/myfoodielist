@@ -1,13 +1,16 @@
-<div class="results-header">
-  <h1>Your Restaurant Suggestions. Click add to add to list.</h1>
+<!-- Renders search bar -->
+<div class="resultsearchbox">
+<%= render "shared/search" %>
 </div>
 
+<!-- Restaurants search results -->
 <div class="resultcontent">
   <div class="container">
     <div class="resto-grid">
         <% @restaurants.each do |restaurant| %>
           <div class="card-resto">
-          <img src="https://source.unsplash.com/400x250/?restaurant" />
+          <div class="fas fa-plus addtolist" onclick='javascript:alert("not implemented yet")'> </div>
+          <img src="https://source.unsplash.com/400x250/?restaurant" alt="random pictures of restuarants will be shown" />
             <%# raise %>
             <div>
               <h2 class="ml-2"><%= restaurant.name %></h2>
@@ -22,14 +25,13 @@
   </div>
 </div>
 
+<!-- Side bar to add to list -->
 <div class="resultsidebar">
-    <%# This is the list name based on the search by user %>
   <div class="form-group">
-    <label for="nameoflist">Rename this List!</label>
-    <input type="text" class="form-control" id="namelistnew">
+    <input type="text" class="form-control" id="namelistnew" placeholder="Name Me!">
   </div>
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="addtolist">
-    <label class="form-check-label" for="addtolist">click on restaurant to add to list</label>
+    <label class="form-check-label" for="addtolist">Restaurant.name</label>
   </div>
 </div>
