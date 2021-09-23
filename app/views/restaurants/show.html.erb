@@ -17,6 +17,17 @@
   </div>
   <div class="d-flex justify-content-between">
     <h3><%= @restaurant.name %> Reviews:</h3>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-warning dropdown-toggle mb-3" type="button" id="drop-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Save restaurant to your list
+      </button>
+      <div class="dropdown-menu" aria-labelledby="drop-down">
+        <a class="dropdown-item" href="#">Saved list 1</a>
+        <a class="dropdown-item" href="#">Saved list 2</a>
+        <a class="dropdown-item" href="#">Saved list 3</a>
+        <a class="dropdown-item" href="#">Saved list 4</a>
+      </div>
+    </div>
   </div>
 
   <ul class="list-review">
@@ -28,21 +39,18 @@
           <p>Written by: <%= review.user.username %></p>
         </div>
       </div>
-      <br>
-    <% end  %>
+      <% end  %>
   </ul>
 
-  <div class="d-flex justify-content-end">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="drop-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Save restaurant to your list
-    </button>
-    <div class="dropdown-menu" aria-labelledby="drop-down">
-      <a class="dropdown-item" href="#">Saved list 1</a>
-      <a class="dropdown-item" href="#">Saved list 2</a>
-      <a class="dropdown-item" href="#">Saved list 3</a>
-      <a class="dropdown-item" href="#">Saved list 4</a>
-    </div>
-  </div>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content, label: "Add your review:" %>
+    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+    <%# <%= f.association :user %>
+    <%= f.submit "Submit review" %>
+    <%# <button class="btn btn-primary">
+    Submit review
+    </button> %>
+  <% end %>
 
   <div class="d-flex justify-content-end">
     <%= link_to "Back to search", results_path(query: @query) %>
