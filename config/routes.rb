@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   resources :restaurants do
     resources :reviews
   end
+
+  # lists route
+  resources :lists
 end
