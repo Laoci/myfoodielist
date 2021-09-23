@@ -1,9 +1,12 @@
 <div class="container mt-4">
-  <div class="d-flex justify-content-between mb-3">
+  <div class="d-flex justify-content-between mb-2">
     <h1><%= @restaurant.name %></h1>
     <button class="btn btn-info">Favorite!</button>
   </div>
+
+    <p>Average rating: `insert rating here` 4.75/5.00</p>
     <img src="https://source.unsplash.com/1120x600/?restaurant" />
+
   <div class="d-flex justify-content-between">
     <p>Address: <strong><%= @restaurant.address %></strong></p>
     <p>Postal code: <strong><%= @restaurant.postal_code %></strong></p>
@@ -12,14 +15,14 @@
   </div>
   <div class="d-flex justify-content-between">
     <h3><%= @restaurant.name %> Reviews:</h3>
-    <h3>Average rating: `insert rating here`</h3>
   </div>
 
-
-  <ul>
-    <li>review 1</li>
-    <li>review 2</li>
-    <li>review 3</li>
+  <ul class="list-review">
+    <% rest_array = @restaurant.reviews.last(3) %>
+      <% rest_array.each do |review| %>
+      <li class="list-review-content"><%= review.content %></li>
+      <br>
+    <% end  %>
   </ul>
 
   <div class="d-flex justify-content-end">

@@ -1,7 +1,9 @@
 class Restaurant < ApplicationRecord
 
+  has_many :reviews, dependent: :destroy
+
   # Name of restaurant, must have name, name must be unique and minimum 3 characters
-  validates :name, presence: true, uniqueness: true, length: { minimum: 3 }
+  validates :name, presence: true, uniqueness: false, length: { minimum: 3 }
 
   # Must have address, at least 8 characters
   validates :address, presence: true, length: { minimum: 8 }
