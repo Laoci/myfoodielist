@@ -21,13 +21,13 @@ class Restaurant < ApplicationRecord
   has_many :restaurant_lists
   has_many :lists, through: :restaurant_lists
 
-
   def avg_rating
     rev_arr = self.reviews
     total_rating = 0
     rev_arr.each do |rate|
       total_rating += rate.rating
     end
+    binding.pry
     processed_rating = total_rating / self.reviews.count
     return processed_rating.to_f
   end
