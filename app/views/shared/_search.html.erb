@@ -1,0 +1,16 @@
+<!-- Banner & Search Bar -->
+<div class="container">
+  <div class="wrap">
+    <%= simple_form_for :search, url: '/results', method: :get do |f| %>
+      <div class="d-flex search-form-control form-group">
+        <input class="form-control" type="text" name="query" id="query" placeholder="Search for restaurants in your favorite area of town" />
+        <button type="submit" class="searchButton">
+          <i class="fas fa-search "></i>
+        </button>
+      </div>
+      <% if flash[:alert].present? %>
+        <p class="alert alert-main"><%= alert %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
