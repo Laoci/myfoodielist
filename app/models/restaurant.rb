@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   # Name of restaurant, must have name, name must be unique and minimum 3 characters
   validates :name, presence: true, length: { minimum: 3 }
@@ -13,11 +14,21 @@ class Restaurant < ApplicationRecord
 
   # Must have postal code, must be numbers, exact length is 6
   validates :postal_code, presence: true
-  validates :postal_code, length: { is: 6}
+  validates :postal_code, length: { is: 6 }
 
   # Associations
   has_one_attached :photo
   has_many :restaurant_lists
   has_many :lists, through: :restaurant_lists
 
+
+  def avg_rating
+    rev_arr = self.reviews
+    total_rating = 0
+    rev_arr.each do |rate|
+      total_rating += rate.rating
+    end
+    processed_rating = total_rating / self.reviews.count
+    return processed_rating.to_f
+  end
 end
