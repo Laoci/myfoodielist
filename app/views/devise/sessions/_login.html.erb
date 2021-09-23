@@ -1,5 +1,8 @@
 <%= simple_form_for(resource, url:
 session_path(resource)) do |f| %>
+<!-- Error handling: display alert messages directly in the modal, not redirect to a view -->
+<%#= f.error_notification %>
+
 <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true, input_html: {
     autocomplete: "email" } %>
