@@ -4,7 +4,8 @@
     <button class="btn btn-info">Favorite!</button>
   </div>
 
-    <p>Average rating: `insert rating here` 4.75/5.00</p>
+    <p>Average rating: <%= @restaurant.avg_rating %>/5.0</p>
+    <%# <% raise %>
     <img src="https://source.unsplash.com/1120x600/?restaurant" />
 
   <div class="d-flex justify-content-between">
@@ -15,29 +16,43 @@
   </div>
   <div class="d-flex justify-content-between">
     <h3><%= @restaurant.name %> Reviews:</h3>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-warning dropdown-toggle mb-3" type="button" id="drop-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Save restaurant to your list
+      </button>
+      <div class="dropdown-menu" aria-labelledby="drop-down">
+        <a class="dropdown-item" href="#">Saved list 1</a>
+        <a class="dropdown-item" href="#">Saved list 2</a>
+        <a class="dropdown-item" href="#">Saved list 3</a>
+        <a class="dropdown-item" href="#">Saved list 4</a>
+      </div>
+    </div>
   </div>
 
   <ul class="list-review">
     <% rest_array = @restaurant.reviews.last(3) %>
       <% rest_array.each do |review| %>
-      <li class="list-review-content"><%= review.content %></li>
-      <br>
-    <% end  %>
+      <div>
+        <li class="list-review-content"><%= review.content %></li>
+        <div class="d-flex justify-content-end">
+          <p>Written by: <%= review.user.username %></p>
+        </div>
+      </div>
+      <% end  %>
   </ul>
 
-  <div class="d-flex justify-content-end">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="drop-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Save restaurant to your list
-    </button>
-    <div class="dropdown-menu" aria-labelledby="drop-down">
-      <a class="dropdown-item" href="#">Saved list 1</a>
-      <a class="dropdown-item" href="#">Saved list 2</a>
-      <a class="dropdown-item" href="#">Saved list 3</a>
-      <a class="dropdown-item" href="#">Saved list 4</a>
-    </div>
-  </div>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content, label: "Add your review:" %>
+    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+    <%# <%= f.association :user %>
+    <%= f.submit "Submit review" %>
+    <%# <button class="btn btn-primary">
+    Submit review
+    </button> %>
+  <% end %>
 
-  <div class="d-flex justify-content-end">
+
+  <div class="d-flex justify-content-end m-4">
     <%= link_to "Back to search", results_path %>
   </div>
 </div>
