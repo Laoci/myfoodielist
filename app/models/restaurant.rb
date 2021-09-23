@@ -27,8 +27,7 @@ class Restaurant < ApplicationRecord
     rev_arr.each do |rate|
       total_rating += rate.rating
     end
-    binding.pry
     processed_rating = total_rating / self.reviews.count
-    return processed_rating.to_f
+    return processed_rating.round(1)
   end
 end
