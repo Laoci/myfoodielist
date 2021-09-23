@@ -15,4 +15,8 @@ class Restaurant < ApplicationRecord
   validates :postal_code, presence: true
   validates :postal_code, length: { is: 6}
   # validates :postal_code, numericality: { equal_to: 6 }
+
+  # Associations
+  has_many :restaurant_lists
+  has_many :lists, through: :restaurant_lists
 end

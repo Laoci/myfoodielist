@@ -1,0 +1,2 @@
+class RestaurantList < ApplicationRecord
+end
