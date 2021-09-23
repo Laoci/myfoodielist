@@ -8,7 +8,14 @@
 
 # create restaurant seed --------------------------------------
 
-puts "creating restaurants..."
+puts "Clearing database..."
+User.destroy_all
+Restaurant.destroy_all
+Review.destroy_all
+List.destroy_all
+
+puts "Creating restaurants..."
+
 30.times do
   restaurant_name = Faker::Restaurant.name
   postal = Faker::Number.number(digits: 6)
@@ -25,7 +32,7 @@ puts "creating restaurants..."
   user = User.new(username: username, email: email, password: password)
   user.save!
 
-  puts "creating reviews and ratings....."
+  puts "Creating reviews and ratings..."
   5.times do
     content = Faker::Restaurant.review
     rating = Faker::Number.between(from: 1, to: 5)
@@ -34,4 +41,28 @@ puts "creating restaurants..."
 
     review.save!
   end
+
+  puts "Creating lists..."
+  5.times do
+    list = List.new(user: user, shared: false, name: "#{genre[0...10]}")
+    list.save!
+    list.restaurants << Restaurant.limit(5)
+  end
 end
+
+test_user = User.new(username: "John Doe", email: "johndoe@gmail.com", password: 123456)
+test_user.save!
+
+list_a = List.create(user: test_user, shared: false, name: "List A")
+list_a.restaurants << Restaurant.limit(5)
+list_a.save!
+
+list_b = List.create(user: test_user, shared: false, name: "List B")
+list_b.restaurants << Restaurant.limit(5)
+list_b.save!
+
+list_c = List.create(user: test_user, shared: false, name: "List C")
+list_c.restaurants << Restaurant.limit(5)
+list_c.save!
+
+puts "Seeding finished"
