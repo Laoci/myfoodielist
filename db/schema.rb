@@ -10,13 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2021_09_23_050434) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -45,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_09_23_050434) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
-  
+
   create_table "favorites", force: :cascade do |t|
     t.bigint "restaurant_id"
     t.bigint "user_id"
@@ -53,7 +50,6 @@ ActiveRecord::Schema.define(version: 2021_09_23_050434) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["restaurant_id"], name: "index_favorites_on_restaurant_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
-
   end
 
   create_table "lists", force: :cascade do |t|
@@ -106,7 +102,6 @@ ActiveRecord::Schema.define(version: 2021_09_23_050434) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
