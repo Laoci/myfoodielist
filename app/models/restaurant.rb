@@ -17,4 +17,7 @@ class Restaurant < ApplicationRecord
 
   # Associations
   has_one_attached :photo
+  has_many :restaurant_lists
+  has_many :lists, through: :restaurant_lists
+
 end

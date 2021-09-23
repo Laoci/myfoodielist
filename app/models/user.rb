@@ -4,5 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+  # Must have username
+  validates :username, presence: true
+
+  # Associations
+  has_many :lists
+  has_many :restaurant_lists, through: :lists
+  has_many :restaurants, through: :restaurant_lists
   has_many :reviews, dependent: :destroy
+
 end
