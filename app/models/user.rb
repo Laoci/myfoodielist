@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
 
   # Must have username
-  validates :username, presence: true
+  # validates :username, presence: true
 
   # Associations
   has_many :lists
