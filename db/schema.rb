@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_22_093644) do
+ActiveRecord::Schema.define(version: 2021_09_23_050434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_favorites_on_restaurant_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "lists", force: :cascade do |t|
     t.string "name", default: "New List", null: false
@@ -66,6 +75,8 @@ ActiveRecord::Schema.define(version: 2021_09_22_093644) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "restaurants"
+  add_foreign_key "favorites", "users"
   add_foreign_key "lists", "users"
   add_foreign_key "restaurant_lists", "lists"
   add_foreign_key "restaurant_lists", "restaurants"
