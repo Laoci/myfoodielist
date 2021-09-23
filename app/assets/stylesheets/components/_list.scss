@@ -1,10 +1,35 @@
-.list-group {
-  position: fixed;
-  top: 258px;
-  width: 280px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  margin-top: 8px;
-  border-radius: 2px;
+// .list-group {
+//   position: fixed;
+//   top: 258px;
+//   width: 280px;
+//   overflow: hidden;
+//   background: white;
+//   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+//   margin-top: 8px;
+//   border-radius: 2px;
+// }
+
+.btn6, .btn6:link, .btn6:visited {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 24px;
+  border: 1px solid #333;
+  color: rgb(25, 207, 122);
+  font-weight: 700;
+  height: 300px;
+  width: 300px;
+  margin: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 3px;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    background: rgb(73, 214, 68);
+    border: 1px solid #333;
+    color: #fefefe;
+    border-radius: 30px;
+  }
 }
