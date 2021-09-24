@@ -9,17 +9,22 @@
     <p>Average rating: <%= @restaurant.avg_rating %>/5.0</p>
 
     <div class="d-flex">
-      <h4 class="mr-4">Tag: </h4>
+      <h4 class="mr-4 mt-1">Tag: </h4>
         <ul class="tags">
-          <li><a href="#" class="tag">HTML</a>
-          <a class="delete" href="#"><i class="fa fa-times"></i></a>
-          </li>
-          <li><a href="#" class="tag">CSS</a></li>
-          <li><a href="#" class="tag">JavaScript</a></li>
-        </ul>
-      <a class="ml-3 pt-2" href="#">Add a tag</a>
+          <!-- User logged in -->
+          <% if current_user %>
+          <% end  %>
+            <%#= @tags.each do |tag| %>
+              <%# <li><a href="#" class="tag"><strong>Cheap!</strong></a> %>
+              <%# <a class="delete" href="#"><i class="fa fa-times"></i></a> %>
+              <%# </li> %>
+            <%# <% end %>
+          </ul>
+            <button class="btn btn-warning mb-3">
+              <%= link_to "Add a tag", new_tag_path(@restaurant.id) %>
+            </button>
+      </div>
     </div>
-  </div>
     <img src="https://source.unsplash.com/1120x600/?restaurant" />
 
   <div class="d-flex justify-content-between">
@@ -91,7 +96,7 @@
   <%= simple_form_for [@restaurant, @review] do |f| %>
     <%= f.input :content, label: "Add your review:" %>
     <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
-    <%= f.association :user %>
+    <% f.association :user %>
     <%= f.submit "Submit review", class: "btn btn-info" %>
     <%= link_to "Back to search", results_path(query: @query), class: "btn btn-secondary" %>
   <% end %>

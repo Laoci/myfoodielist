@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :lists
   end
+
+  # tags route
+  resources :tags
 end
