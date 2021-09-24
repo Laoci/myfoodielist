@@ -1,6 +1,17 @@
 <%= render 'shared/navbar' %>
 <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fHJlc3RhdXJhbnQlMjBzaG9wJTIwZnJvbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60')">
-  <%= render "shared/search" %>
+  <div class="padding-x-md padding-y-xl flex flex-center">
+    <div class="text-center">
+      <div class="margin-bottom-xs">
+        <%# <%= link_to new_user_list_path(:user_id) do %>
+          <div class="list-square-new">
+             <button class="reset btn-gradient-1">Start Your New List Here!</button>
+          </div>
+        <%# <% end %>
+      </div>
+        <%= render "shared/search" %>
+    </div>
+  </div>
 </div>
 <body>
   <h2>Curated Lists For The Undecided</h2>

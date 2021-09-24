@@ -24,3 +24,11 @@ button.nav-link {
   background: white;
   color: #00AF91;
 }
+
+.btn-gradient-1 {
+  border-width: 8px;
+  background-color: #fefefe;
+  border-style: solid;
+  border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+  margin-top: 150px;
+}

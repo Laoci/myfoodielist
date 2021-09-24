@@ -2,11 +2,11 @@
 
 <h1>Restaurants</h1>
 
-
 <!-- Restaurants search results -->
 <div class="resultcontent">
   <div class="container">
     <div class="resto-grid">
+
       <div class="card-list col-4">
         <%= link_to new_user_list_path(@restaurants) do %>
           <div class="list-square-new">
@@ -20,6 +20,7 @@
         </div>
       </div>
     </div>
+      
       <% @restaurants.each do |restaurant| %>
         <%= link_to restaurant_path(restaurant, query: @query_value) do %>
         <div class="card-resto">
