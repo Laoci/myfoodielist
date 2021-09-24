@@ -7,6 +7,20 @@
   <div class="container">
     <div class="resto-grid">
 
+      <div class="card-list col-4">
+        <%= link_to new_user_list_path(@restaurants) do %>
+          <div class="list-square-new">
+            <h2>Add new</h2>
+            <h2><i class="fas fa-plus"></i></h2>
+          </div>
+        <% end %>
+      <div class="card-list-infos">
+        <div>
+          <h3>Go search for more restaurants!</h3>
+        </div>
+      </div>
+    </div>
+      
       <% @restaurants.each do |restaurant| %>
         <%= link_to restaurant_path(restaurant, query: @query_value) do %>
         <div class="card-resto">

@@ -30,15 +30,49 @@
   <div class="d-flex justify-content-between">
     <h3><%= @restaurant.name %> Reviews:</h3>
     <div class="d-flex justify-content-end">
-      <button class="btn btn-warning dropdown-toggle mb-3" type="button" id="drop-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Save restaurant to your list
-      </button>
-      <div class="dropdown-menu" aria-labelledby="drop-down">
-        <a class="dropdown-item" href="#">Saved list 1</a>
-        <a class="dropdown-item" href="#">Saved list 2</a>
-        <a class="dropdown-item" href="#">Saved list 3</a>
-        <a class="dropdown-item" href="#">Saved list 4</a>
-      </div>
+      <!-- User logged in -->
+      <%- if current_user %>
+        <button class="btn btn-warning dropdown-toggle mb-3" type="button" id="drop-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Save restaurant to your list
+        </button>
+        <div class="dropdown-menu" aria-labelledby="drop-down">
+          <% user_lists = current_user.lists %>
+          <%- if user_lists.empty? %>
+            <%= link_to "Create new list", new_user_list_path(current_user), class:"dropdown-item" %>
+          <% else %>
+            <% user_lists.each do |list| %>
+              <%- if list.restaurants.include?(@restaurant)%>
+                <%= link_to user_list_path(current_user, list, restaurant: @restaurant), method: :patch, class:"dropdown-item" do %>
+                  <%= list.name %> <i class="far fa-check-circle"></i>
+                <% end %>
+              <% else %>
+                <%= link_to list.name, user_list_path(current_user, list, restaurant: @restaurant), method: :patch, class:"dropdown-item" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <!-- User not logged in -->
+      <% else %>
+        <button class="btn btn-warning dropdown-toggle mb-3" type="button" id="drop-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Log in / Sign up and get to your list!
+        </button>
+        <div class="dropdown-menu" aria-labelledby="drop-down">
+          <button
+                    type="button"
+                    class="dropdown-item"
+                    data-toggle="modal"
+                    data-target="#exampleModalB">
+                    Log in
+          </button>
+          <button
+                    type="button"
+                    class="dropdown-item"
+                    data-toggle="modal"
+                    data-target="#exampleModalA">
+                    Sign up
+          </button>
+        </div>
+      <% end %>
     </div>
   </div>
 

@@ -3,10 +3,22 @@
 <div class="resultcontent">
   <div class="container">
     <div class="resto-grid">
+      <div class="card-list col-4">
+        <%= link_to results_path(query: @query_value) do %>
+          <div class="list-square-new">
+            <h2>Add new</h2>
+            <h2><i class="fas fa-plus"></i></h2>
+          </div>
+        <% end %>
+      <div class="card-list-infos">
+        <div>
+          <h3>Go search for more restaurants!</h3>
+        </div>
+      </div>
+    <%#= raise %>
         <% @list.restaurants.each do |restaurant| %>
           <%= link_to restaurant_path(restaurant, query: @query_value) do %>
           <div class="card-resto">
-          <div class="fas fa-plus addtolist" onclick='javascript:alert("not implemented yet")'> </div>
           <img src="https://source.unsplash.com/400x250/?restaurant" alt="random pictures of restuarants will be shown" />
             <div>
               <h2 class="ml-2"><%= restaurant.name %></h2>

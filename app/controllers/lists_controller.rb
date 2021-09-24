@@ -4,18 +4,30 @@ class ListsController < ApplicationController
     @lists = @user.lists
   end
 
+  def new
+    @list = List.new
+    @user = current_user
+  end
+
   def show
     @user = current_user
     @list = List.find(params[:id])
   end
 
   def create
-    @user = current_user
     @list = List.new(list_params)
-    @list.save ? (flash[:notice] = "Your list is saved") : (flash[:alert] = "Sorry, an error occured")
+    @user = current_user
+    @list.user = current_user
+    if @list.save
+      flash[:alert] = "Your list is saved"
+      redirect_to user_lists_path(user_id: @list.user_id)
+    else
+      flash[:alert] = "Error"
+      render :new
+    end
   end
 
-  def destory
+  def destroy
     @user = current_user
     @list = List.find(list_params[:id])
     @list.destory
