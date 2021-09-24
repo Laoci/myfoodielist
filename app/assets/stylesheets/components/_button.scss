@@ -1,9 +1,28 @@
+.nav-link {
+  color: #00AF91 !important;
+  font-size: large;
+}
+
 button.nav-link {
   background-color: inherit;
   border: unset;
   border-width: unset;
   border-style: unset;
   border-image: unset;
+  margin: 0;
+}
+
+.btn-flat {
+  color: #00AF91;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: white;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: white;
+  color: #00AF91;
 }
 
 .btn-gradient-1 {
