@@ -1,11 +1,16 @@
 <%= render 'shared/navsearchbar' %>
-<h1>Restaurants</h1>
+
+<!-- Renders old version search bar
+<div class="resultsearchbox">
+  <%#= render 'shared/search' %>
+</div>
+-->
 
 <!-- Restaurants search results -->
 <div class="resultcontent">
   <div class="container">
     <div class="resto-grid">
-        <% @restaurants.each do |restaurant| %>
+        <% @list.restaurants.each do |restaurant| %>
           <%= link_to restaurant_path(restaurant, query: @query_value) do %>
           <div class="card-resto">
           <div class="fas fa-plus addtolist" onclick='javascript:alert("not implemented yet")'> </div>
