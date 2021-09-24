@@ -3,7 +3,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  margin-top: 8px;
+  margin: 8px;
   border-radius: 2px;
   cursor:pointer;
 }
@@ -16,14 +16,26 @@
 }
 
 .resto-grid {
+  // background-size: cover;
+  // background-position: center;
+  // height: 150px;
+  // border-radius: 1px;
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 80%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-wrap: wrap;
   left: 10px;
   position: absolute;
   margin: 4px;
+
   justify-content: space-around;
+  align-items: center;
+  justify-content: flex-start;
+  // width: 1600px;
+  // font-size: 22px;
+  // color: white;
+  // font-weight: bolder;
+  // text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
 
 .card-resto h2 {
@@ -94,4 +106,77 @@
   margin-left: 616px;
   border-radius: 8px;
   background-color: rgba(255,255,255,0.9);
+}
+
+.card-list {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.card-list .list-square {
+  height: 200px;
+  width: 100%;
+  background-color: #00AF91;
+  color: white;
+  text-align: center;
+}
+
+.card-list .list-square-new {
+  height: 200px;
+  width: 100%;
+  background-color: #F58634;
+  color: white;
+  text-align: center;
+}
+
+.card-list h2 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.card-list h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-list p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-list .card-list-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.list-grid {
+  // background-size: cover;
+  // background-position: center;
+  // height: 150px;
+  // border-radius: 1px;
+  // width: 80%;
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  // width: 1600px;
+  // font-size: 22px;
+  // color: white;
+  // font-weight: bolder;
+  // text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+a:hover {
+  text-decoration: none;
 }
