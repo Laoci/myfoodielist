@@ -11,9 +11,11 @@ Rails.application.routes.draw do
 
   # reviews route
   resources :restaurants do
-    resources :reviews, only: [ :show, :create, :new ]
+    resources :reviews, only: [:show, :create, :new]
   end
 
   # lists route
-  resources :lists
+  resources :users do
+    resources :lists
+  end
 end

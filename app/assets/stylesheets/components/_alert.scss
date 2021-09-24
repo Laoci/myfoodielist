@@ -1,19 +1,21 @@
-.alert {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
-}
+// .alert {
+//   position: fixed;
+//   bottom: 16px;
+//   right: 16px;
+//   z-index: 1000;
+// }
 
 .alert-main {
-  padding: 16px 24px;
+  padding: 2px;
+  width: auto;
   display: flex;
   position: relative;
-  top: 100px;
-  justify-content: flex-start;
-  align-items: baseline;
+  bottom: 2px;
   background: rgb(74, 174, 52);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  margin: 8px;
+  border-radius: 2px;
+  margin: 1px;
+  text-align: justify;
+  font-size: 14px;
+  color: aliceblue;
 }

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   # validates :username, presence: true
 
   # Associations
-  has_many :lists
+  has_many :lists, dependent: :destroy
   has_many :restaurant_lists, through: :lists
   has_many :restaurants, through: :restaurant_lists
   has_many :reviews, dependent: :destroy
