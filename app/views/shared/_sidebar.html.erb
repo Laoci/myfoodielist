@@ -3,7 +3,7 @@
     <input type="text" class="form-control" id="namelistnew" placeholder="Name Me!">
   </div>
   <table>
-    <% @restaurants.each_with_index do |restaurant, i| %>
+    <% restaurants.each_with_index do |restaurant, i| %>
         <tr>
           <td><%= i + 1 %>. </td>
           <td><%= restaurant.name %></td>
