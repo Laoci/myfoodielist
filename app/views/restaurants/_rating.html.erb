@@ -1,0 +1,5 @@
+<% rev_arr = @restaurant.reviews %>
+<% total_rate = 0 %>
+<% avg_rating = rev_arr.each do |review| %>
+<% review.rating += total_rate %>
+<% end %>

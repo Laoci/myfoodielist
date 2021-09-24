@@ -1,4 +1,5 @@
 class List < ApplicationRecord
+  has_many :restaurant_lists, dependent: :destroy
   has_many :restaurants, through: :restaurant_lists
   belongs_to :user
 

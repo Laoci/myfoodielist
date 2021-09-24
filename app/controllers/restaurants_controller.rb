@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   def index
     @query_value = params[:query]
-    alert = "Sorry... We cannot find anything by #{@query_value}"
+    alert = "#{@query_value} is not found. Please try another search."
 
     if params[:query].present? && /\d{6}/ === @query_value
       @restaurants = Restaurant.where(postal_code: @query_value)
