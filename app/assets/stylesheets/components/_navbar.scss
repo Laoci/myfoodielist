@@ -7,6 +7,12 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+img.navbar-brand{
+  overflow: hidden;
+  width:100%;
+  height:auto;
+  max-width:300px;
 }
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
