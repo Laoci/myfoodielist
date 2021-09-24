@@ -21,7 +21,6 @@ class Restaurant < ApplicationRecord
   has_many :restaurant_lists
   has_many :lists, through: :restaurant_lists
 
-
   def avg_rating
     rev_arr = self.reviews
     total_rating = 0
@@ -29,6 +28,6 @@ class Restaurant < ApplicationRecord
       total_rating += rate.rating
     end
     processed_rating = total_rating / self.reviews.count
-    return processed_rating.to_f
+    return processed_rating.round(1)
   end
 end
