@@ -5,3 +5,11 @@ button.nav-link {
   border-style: unset;
   border-image: unset;
 }
+
+.btn-gradient-1 {
+  border-width: 8px;
+  background-color: #fefefe;
+  border-style: solid;
+  border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+  margin-top: 150px;
+}
