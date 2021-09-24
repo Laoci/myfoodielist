@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Create a new food list here!</h1>
+    <%= simple_form_for [@user, @list] do |f| %>
+      <%= f.input :name, label: "Give your food list a name:" %>
+      <%= f.submit "Create", class: "btn btn-info" %>
+      <%= link_to "Back to search", results_path(query: @query), class: "btn btn-secondary" %>
+    <% end %>
+</div>
