@@ -1,8 +1,5 @@
 class Restaurant < ApplicationRecord
 
-  has_many :reviews, dependent: :destroy
-  has_many :favorites, dependent: :destroy
-
   # Name of restaurant, must have name, name must be unique and minimum 3 characters
   validates :name, presence: true, length: { minimum: 3 }
 
@@ -20,6 +17,9 @@ class Restaurant < ApplicationRecord
   has_one_attached :photo
   has_many :restaurant_lists
   has_many :lists, through: :restaurant_lists
+  has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :tags
 
   def avg_rating
     rev_arr = self.reviews

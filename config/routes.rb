@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   end
 
   # tags route
-  resources :tags
+  resources :restaurants do
+    resources :tags
+  end
 end

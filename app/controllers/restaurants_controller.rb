@@ -23,11 +23,13 @@ class RestaurantsController < ApplicationController
     @query = params[:query]
     @restaurant = Restaurant.find(params[:id])
     @review = Review.new
+    @tag = Tag.new
   end
 
   def new
     @restaurant = Restaurant.find(params[:id])
     @review = Review.new
+    @tag = Tag.new
   end
 
   def create
@@ -38,7 +40,7 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-  params.require(:restaurant).permit(:name, :address, :genre, :postal_code, :photo)
+    params.require(:restaurant).permit(:name, :address, :genre, :postal_code, :photo)
   end
 
   def review_params

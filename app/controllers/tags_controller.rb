@@ -1,26 +1,25 @@
 class TagsController < ApplicationController
-  def index
-    @tags = Tag.all
-  end
+  # def index
+  #   @tags = Tag.all
+  # end
 
   def show
     @user = current_user
-    @tag = Tag.find(params[:id])
+    @tags = Tag.find(restaurant[:id])
   end
 
-  def new
-    @tag = Tag.new
-    @restaurant = Restaurant.find(params[:format])
-    @user = current_user
-    raise
-  end
+  # def new
+  #   @tag = Tag.new
+  #   @restaurant = Restaurant.find(params[:format])
+  #   @user = current_user
+  # end
 
   def create
     @tag = Tag.new(tag_params)
-    @restaurant = Restaurant.find(params[:format])
-    @user = current_user
-    @tag.user = @user
-    @tag.restaurant = @restaurant.id
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @tag.restaurant = @restaurant
+    @tag.user = current_user
+    # raise
     if @tag.save
       flash[:alert] = "Your tag is saved"
       redirect_to restaurant_path(@restaurant)
@@ -41,6 +40,6 @@ class TagsController < ApplicationController
   private
 
   def tag_params
-    params.require(:tag).permit(:user, :restaurant, :name)
+    params.require(:tag).permit(:name)
   end
 end

@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Create a new tag here!</h1>
-    <%= simple_form_for [@user, @tag] do |f| %>
+    <%= simple_form_for @tag do |f| %>
       <%= f.input :name, label: "Give your tag a name:" %>
       <%= f.submit "Create", class: "btn btn-info" %>
       <%= link_to "Back to search", restaurant_path(@restaurant), class: "btn btn-secondary" %>
