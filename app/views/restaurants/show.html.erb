@@ -1,4 +1,5 @@
 <%= render 'shared/navsearchbar' %>
+
 <div class="container mt-4">
   <div class="d-flex justify-content-between mb-2">
     <h1><%= @restaurant.name %></h1>
@@ -11,15 +12,27 @@
     <div class="d-flex">
       <h4 class="mr-4">Tag: </h4>
         <ul class="tags">
-          <li><a href="#" class="tag">HTML</a>
+          <% tags_array = @restaurant.tags.last(5) %>
+          <% tags_array.each do |tag| %>
+          <li><a href="#" class="tag"><%= tag.name %></a>
           <a class="delete" href="#"><i class="fa fa-times"></i></a>
           </li>
-          <li><a href="#" class="tag">CSS</a></li>
-          <li><a href="#" class="tag">JavaScript</a></li>
+          <% end %>
         </ul>
-      <a class="ml-3 pt-2" href="#">Add a tag</a>
     </div>
   </div>
+    <%= simple_form_for [@restaurant, @tag] do |f| %>
+      <%= f.input :name, label: "Name your tag:" %>
+      <% f.association :user %>
+      <%= f.submit "Submit", class: "btn btn-info" %>
+    <% end %>
+
+          <!-- User logged in -->
+          <%# if current_user %>
+          <%# end  %>
+            <%# <button class="btn btn-warning mb-3">
+              <%= link_to "Add a tag", new_tag_path(@restaurant) %>
+            <%# </button>%>
     <img src="https://source.unsplash.com/1120x600/?restaurant" />
 
   <div class="d-flex justify-content-between">
