@@ -1,7 +1,8 @@
 const handleClickFunction = (event) => {
   const restId = event.currentTarget.dataset.restaurantId;
   const restName = event.currentTarget.dataset.restaurantName;
-  addToLocalStorage(restId, restName);
+  const userId = event.currentTarget.dataset.userId;
+  addToLocalStorage(restId, restName, userId);
   location.reload();
 }
 
@@ -19,7 +20,7 @@ const restObjExists = (restaurantsArray, givenId) => {
 
 
 // to do next: addToLocalStorage function
-const addToLocalStorage = (restId, restName) => {
+const addToLocalStorage = (restId, restName, userId) => {
   // local store not empty - start the list
   if (window.localStorage.list) {
     // console.log("exist");
@@ -28,7 +29,8 @@ const addToLocalStorage = (restId, restName) => {
     if (!restObjExists(restaurantsArray, restId)) {
       restaurantsArray.push({
         restId: restId,
-        restName: restName
+        restName: restName,
+        userId: userId
       })
       window.localStorage.setItem('list', JSON.stringify(restaurantsArray))
     } else {
@@ -39,7 +41,8 @@ const addToLocalStorage = (restId, restName) => {
     window.localStorage.setItem('list', JSON.stringify([
       {
         restId: restId,
-        restName: restName
+        restName: restName,
+        userId: userId
       }
     ]))
   }
