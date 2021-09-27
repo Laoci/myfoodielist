@@ -36,7 +36,7 @@ puts "Creating restaurants..."
   new_user.save!
 
   puts "Creating reviews and ratings..."
-  1.times do
+  3.times do
     content = Faker::Restaurant.review
     rating = Faker::Number.between(from: 3, to: 5)
 
