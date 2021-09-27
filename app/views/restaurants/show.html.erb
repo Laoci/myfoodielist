@@ -55,11 +55,11 @@
           <% else %>
             <% user_lists.each do |list| %>
               <%- if list.restaurants.include?(@restaurant)%>
-                <%= link_to user_list_path(current_user, list, restaurant: @restaurant), method: :patch, class:"dropdown-item" do %>
+                <%= link_to user_list_path(current_user, list, restaurant: @restaurant, query: @query), method: :patch, class:"dropdown-item" do %>
                   <%= list.name %> <i class="far fa-check-circle"></i>
                 <% end %>
               <% else %>
-                <%= link_to list.name, user_list_path(current_user, list, restaurant: @restaurant), method: :patch, class:"dropdown-item" %>
+                <%= link_to list.name, user_list_path(current_user, list, restaurant: @restaurant, query: @query), method: :patch, class:"dropdown-item" %>
               <% end %>
             <% end %>
           <% end %>
@@ -105,7 +105,12 @@
     <%= f.input :content, label: "Add your review:" %>
     <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
     <% f.association :user %>
-    <%= f.submit "Submit review", class: "btn btn-info" %>
-    <%= link_to "Back to search", results_path(query: @query), class: "btn btn-secondary" %>
+    <%- if current_user %>
+      <%= f.submit "Submit review", class: "btn btn-info" %>
+      <%= link_to "My lists", user_lists_path(current_user), class: "btn btn-success" %>
+    <% else %>
+      <%= link_to "Back to search", results_path(query: @query), class: "btn btn-secondary" %>
+      <p class="alert-main">Please log in or sign up to submit a review.</p>
+    <% end %>
   <% end %>
 </div>
