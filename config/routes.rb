@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # results routes
   get "results", to: "restaurants#index"
 
+  # temp list routes
+  post "temp_list", to: "lists#show"
+
   # restaurant routes
   get "restaurants/:id", to: "restaurants#show", as: :restaurant
 

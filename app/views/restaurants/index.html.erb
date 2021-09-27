@@ -9,8 +9,13 @@
       <% @restaurants.each do |restaurant| %>
         <%= link_to restaurant_path(restaurant, query: @query_value) do %>
         <div class="card-resto">
-        <div class="fas fa-plus addtolist" onclick='javascript:alert("not implemented yet")'> </div>
+        <%# <div class="fas fa-plus addtolist" onclick='javascript:alert("not implemented yet")'> </div> %>
         <img src="https://source.unsplash.com/400x250/?restaurant" alt="random pictures of restuarants will be shown" />
+          <div  class="fas fa-plus add-to-list addtolist"
+                data-restaurant-id=<%=restaurant.id%>
+                data-restaurant-name="<%=restaurant.name%>">
+            <%= link_to "" %>
+          </div>
           <div>
             <h2 class="ml-2"><%= restaurant.name %></h2>
             <p>Restaurant address: <strong><%= restaurant.address %></strong></p>
