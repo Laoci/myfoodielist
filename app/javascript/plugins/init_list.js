@@ -33,7 +33,9 @@ const addToLocalStorage = (restId, restName, userId) => {
         userId: userId
       })
       window.localStorage.setItem('list', JSON.stringify(restaurantsArray))
+        alert(`${restName} added!`);
     } else {
+      alert(`${restName} not added as it is in your list.`)
       // console.log('do nothing');
     }
   } else {

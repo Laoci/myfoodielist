@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import { csrfToken } from '@rails/ujs'
 
 export default class extends Controller {
   static targets = [ "namelistnew" ]
@@ -7,9 +8,10 @@ export default class extends Controller {
    console.log("List connected");
   }
 
-  handleClickFunction = (e) => {
-    alert("Click function");
-  }
+  // handleClickFunction = (e) => {
+  //   const restName = e.currentTarget.dataset.restaurantName;
+  //   alert(`${restName} added!`);
+  // }
 
   createNewList = (e) => {
     e.preventDefault()
@@ -17,25 +19,25 @@ export default class extends Controller {
     const listTitle = this.namelistnewTarget.value
 
     // get the items in localstorage
-    const restsArr = JSON.parse(window.localStorage.list)
+    const restsArr = window.localStorage.list
     const userIdNum = restsArr[0].userId;
     // console.log(userIdNum);
 
     // call fetch(`/users/:user_id/lists/new`)
-    fetch(`/users/${userIdNum}/lists/new`, {
+    fetch(`/users/${userIdNum}/lists`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/html',
+        "X-CSRF-Token": csrfToken()
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({listTitle, restsArr}),
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    })
+    .then(response => response.text())
+    .then( html => document.body.innerHTML = html )
+    console.log(html)
+    }
 
 
     // can we update another target?
     // list?
-  }
 }

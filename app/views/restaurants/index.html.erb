@@ -13,7 +13,8 @@
           <div class="card-resto">
           <%# <div class="fas fa-plus addtolist" onclick='javascript:alert("not implemented yet")'> </div> %>
           <img src="https://source.unsplash.com/400x250/?restaurant" alt="random pictures of restuarants will be shown" />
-            <div data-action="click->list#handleClickFunction" class="fas fa-plus add-to-list addtolist"
+            <div  class="fas fa-plus add-to-list addtolist"
+                  <%# data-action="click->list#handleClickFunction"  %>
                   data-restaurant-id=<%=restaurant.id%>
                   data-user-id=<%= current_user.id %>
                   data-restaurant-name="<%=restaurant.name%>">
@@ -31,6 +32,7 @@
       </div>
     </div>
   </div>
+
 
   <!-- Side bar to add to list -->
   <%= render 'shared/sidebar', restaurants: @restaurants %>

@@ -15,8 +15,21 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_params)
+    raw_data = request.body.read
+    data = JSON.parse(raw_data)
+    # listTitle = JSON.parse(data["listTitle"])
+    list_title = data["listTitle"]
+    restos = JSON.parse(data["restsArr"])
+    restos_id = []
+    restos.each do |resto|
+      restos_id << resto["restId"]
+    end
+    restaurant = Restaurant.find(restos_id)
+
+    @list = List.new(name: list_title, user: current_user)
     @user = current_user
+    @list.name = list_title
+    @list.restaurants << restaurant
     @list.user = current_user
     if @list.save
       flash[:alert] = "Your list is saved"
