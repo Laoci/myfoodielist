@@ -24,10 +24,12 @@
               <h2 class="ml-2"><%= restaurant.name %></h2>
               <p>Restaurant address: <strong><%= restaurant.address %></strong></p>
               <p>Postal code: <strong><%= restaurant.postal_code %></strong></p>
-              <p>Cuisine type: <strong><%= restaurant.genre %></strong></p>
-              <% end %>
+              <p>Cuis∏ine type: <strong><%= restaurant.genre %></strong></p>
+
             </div>
-            
+        <% end %>
+       <% end %>
+
 <div class="d-flex justify-content-start">
     <%= simple_form_for :results, url: results_path, method: :get do |f| %>
       <input type="hidden" name="query" value="<%= @query_value %>">
