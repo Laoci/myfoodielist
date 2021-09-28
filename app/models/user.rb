@@ -13,5 +13,5 @@ class User < ApplicationRecord
   has_many :restaurants, through: :restaurant_lists
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :tags
+  has_many :tags, dependent: :destroy
 end
