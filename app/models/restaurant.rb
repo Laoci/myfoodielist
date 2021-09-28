@@ -17,6 +17,7 @@ class Restaurant < ApplicationRecord
   has_many :restaurant_lists, dependent: :destroy
   has_many :lists, through: :restaurant_lists
   has_many :reviews, dependent: :destroy
+  has_many :calendars, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :tags, dependent: :destroy
 
