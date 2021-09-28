@@ -22,12 +22,16 @@ class Restaurant < ApplicationRecord
   has_many :tags
 
   def avg_rating
-    rev_arr = self.reviews
+    rev_arr = reviews
     total_rating = 0
     rev_arr.each do |rate|
       total_rating += rate.rating
     end
-    processed_rating = total_rating / self.reviews.count
+    processed_rating = total_rating / reviews.count
     return processed_rating.round(1)
+  end
+
+  def tag_names
+    return tags.empty? ? [] : tags.map(&:name)
   end
 end
