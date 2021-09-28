@@ -2,6 +2,26 @@
 
 <h1>Restaurants</h1>
 
+<div class="d-flex justify-content-start">
+    <%= simple_form_for :results, url: results_path, method: :get do |f| %>
+      <input type="hidden" name="query" value="<%= @query_value %>">
+      <select name="sort_by" class="btn-flat my-1">
+        <option value="">Sort by</option>
+        <option <%= params["sort_by"] == "name" ? "selected":"" %> value="name">Restaurant Name</option>
+        <option <%= params["sort_by"] == "genre" ? "selected":"" %> value="genre">Cuisine Type</option>
+        <option <%= params["sort_by"] == "avg_rating" ? "selected":"" %> value="avg_rating">Average Rating</option>
+      </select>
+      <select name="sort_order" class="btn-flat my-1">
+        <option value="">Order</option>
+        <option <%= params["sort_order"] == "asc" ? "selected":"" %> value="asc">Ascending</option>
+        <option <%= params["sort_order"] == "desc" ? "selected":"" %> value="desc">Descending</option>
+      </select>
+      <input type="text" name="filter_by" placeholder="<%= params["filter_by"].empty? ? "Filter" : "#{params["filter_by"]}" %>" class="btn-flat my-1">
+      <button class="btn btn-flat my-1" type="submit">Reorganize Results</button>
+    <% end %>
+</div>
+
+
 <!-- Restaurants search results -->
 <div class="resultcontent">
   <div class="container">
@@ -21,6 +41,14 @@
             <p>Restaurant address: <strong><%= restaurant.address %></strong></p>
             <p>Postal code: <strong><%= restaurant.postal_code %></strong></p>
             <p>Cuisine type: <strong><%= restaurant.genre %></strong></p>
+            <p>Average rating: <strong><%= restaurant.avg_rating %>/5.0</strong></p>
+            <p>Tags:
+              <% if restaurant.tag_names.empty? %>
+                <strong><%= "None" %></strong>
+              <% else %>
+                <strong><%= restaurant.tag_names.join(', ') %></strong>
+              <% end %>
+            </p>
             <% end %>
           </div>
         </div>
@@ -28,6 +56,3 @@
     </div>
   </div>
 </div>
-
-<!-- Side bar to add to list -->
-<%= render 'shared/sidebar', restaurants: @restaurants %>
