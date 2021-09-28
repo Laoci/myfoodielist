@@ -31,6 +31,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @review = Review.new
     @tag = Tag.new
+    @explore = Explore.new
   end
 
   def new
