@@ -26,4 +26,9 @@ Rails.application.routes.draw do
   resources :restaurants do
     resources :tags
   end
+
+  # explores route
+  resources :restaurants do
+    resources :explores
+  end
 end
