@@ -74,11 +74,13 @@ puts "Users created"
 
 # Generate reviews and assign them under different users and restaurants randomly
 puts "Seeding reviews and ratings..."
-10.times do
-  content = Faker::Restaurant.review
-  rating = Faker::Number.between(from: 3, to: 5)
-  review = Review.new(content: content, rating: rating, user: User.order("RANDOM()").first, restaurant: Restaurant.order("RANDOM()").first)
-  review.save!
+Restaurant.all.each do |restaurant|
+  5.times do
+    content = Faker::Restaurant.review
+    rating = Faker::Number.between(from: 3, to: 5)
+    review = Review.new(content: content, rating: rating, user: User.order("RANDOM()").first, restaurant: restaurant)
+    review.save!
+  end
 end
 puts "Reviews and ratings created"
 
@@ -96,11 +98,13 @@ puts "Lists created"
 
 # Generate tags for each restaurant
 puts "Seeding tags..."
-User.all.each do |user|
-  3.times do
-    tag_name = Faker::Dessert.flavor
-    tag = Tag.new(name: tag_name, user: user, restaurant: Restaurant.order("RANDOM()").first)
-    tag.save!
+Restaurant.all.each do |restaurant|
+  User.all.each do |user|
+    2.times do
+      tag_name = Faker::Restaurant.type
+      tag = Tag.new(name: tag_name, user: user, restaurant: restaurant)
+      tag.save!
+    end
   end
 end
 puts "Tags created"
