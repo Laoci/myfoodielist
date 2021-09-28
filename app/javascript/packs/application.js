@@ -22,6 +22,7 @@ ActiveStorage.start()
 import "bootstrap";
 import { initList } from '../plugins/init_list'
 import { showList } from '../plugins/show_list'
+import { initMapbox } from '../plugins/init_mapbox';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -31,6 +32,8 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initList();
   showList();
+  initMapbox();
 });
+
 
 import "controllers"
