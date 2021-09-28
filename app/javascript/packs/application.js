@@ -23,6 +23,9 @@ import "bootstrap";
 import { initList } from '../plugins/init_list'
 import { showList } from '../plugins/show_list'
 
+import { initFlatpickr } from "../plugins/flatpickr";
+
+initFlatpickr();
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
