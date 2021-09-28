@@ -10,21 +10,18 @@
         <p>Average rating:
             <%= @restaurant.avg_rating %>/5.0</p>
 
-        <div class="d-flex">
-            <h4 class="mr-4">Tag:
-            </h4>
-            <ul class="tags">
-                <% tags_array = @restaurant.tags.last(5) %>
-                <% tags_array.each do |tag| %>
-                <li>
-                    <a href="#" class="tag"><%= tag.name %></a>
-                    <a class="delete" href="#">
-                        <i class="fa fa-times"></i>
-                    </a>
-                </li>
-                <% end %>
-            </ul>
-        </div>
+    <div class="d-flex">
+      <h4 class="mr-4">Tag: </h4>
+        <ul class="tags">
+          <% tags_array = @restaurant.tags.last(5) %>
+          <% tags_array.each do |tag| %>
+          <li><a href="#" class="tag"><%= tag.name %></a>
+          <a class="delete" href="#"><i class="fa fa-times"></i></a>
+          </li>
+
+          <% end %>
+        </ul>
+
     </div>
     <div class="d-flex justfy-content-start my-2">
     <%= simple_form_for [@restaurant, @tag] do |f| %>

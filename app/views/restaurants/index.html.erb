@@ -1,7 +1,33 @@
-<%= render 'shared/navsearchbar' %>
+<div data-controller="list">
 
-<h1>Restaurants</h1>
+  <%= render 'shared/navsearchbar' %>
 
+  <h1>Restaurants</h1>
+
+  <!-- Restaurants search results -->
+  <div class="resultcontent">
+    <div class="container">
+      <div class="resto-grid">
+        <% @restaurants.each do |restaurant| %>
+          <%= link_to restaurant_path(restaurant, query: @query_value) do %>
+          <div class="card-resto">
+          <%# <div class="fas fa-plus addtolist" onclick='javascript:alert("not implemented yet")'> </div> %>
+          <img src="https://source.unsplash.com/400x250/?restaurant" alt="random pictures of restuarants will be shown" />
+            <div  class="fas fa-plus add-to-list addtolist"
+                  <%# data-action="click->list#handleClickFunction"  %>
+                  data-restaurant-id=<%=restaurant.id%>
+                  data-user-id=<%= current_user.id %>
+                  data-restaurant-name="<%=restaurant.name%>">
+              <%= link_to "" %>
+            </div>
+            <div>
+              <h2 class="ml-2"><%= restaurant.name %></h2>
+              <p>Restaurant address: <strong><%= restaurant.address %></strong></p>
+              <p>Postal code: <strong><%= restaurant.postal_code %></strong></p>
+              <p>Cuisine type: <strong><%= restaurant.genre %></strong></p>
+              <% end %>
+            </div>
+            
 <div class="d-flex justify-content-start">
     <%= simple_form_for :results, url: results_path, method: :get do |f| %>
       <input type="hidden" name="query" value="<%= @query_value %>">
@@ -51,8 +77,12 @@
             </p>
             <% end %>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
+
+  <!-- Side bar to add to list -->
+  <%= render 'shared/sidebar', restaurants: @restaurants %>
+
 </div>
