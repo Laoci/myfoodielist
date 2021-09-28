@@ -9,13 +9,12 @@ Rails.application.routes.draw do
   # temp list routes
   post "temp_list", to: "lists#show"
 
-  # restaurant routes
-  get "restaurants/:id", to: "restaurants#show", as: :restaurant
+  resources :calendars, only: [:index]
 
   # reviews route
   resources :restaurants do
     resources :reviews, only: [:show, :create, :new]
-    resources :calendars, only: [:show, :create, :new ]
+    resources :calendars, only: [:create]
   end
 
   # lists route
