@@ -35,4 +35,7 @@ Rails.application.routes.draw do
   resources :restaurants do
     resources :explores
   end
+
+  # devise redirect logged in user to dashboard
+  get '/user' => "lists#index", :as => :user_root
 end
