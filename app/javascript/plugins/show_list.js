@@ -13,5 +13,9 @@ const showList = () => {
   }
 }
 
+export const getList = () => {
+  return window.localStorage.list
+}
+
 
 export { showList }

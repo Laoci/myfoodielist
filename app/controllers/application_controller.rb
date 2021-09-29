@@ -23,6 +23,14 @@ class ApplicationController < ActionController::Base
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def after_sign_in_path_for(resource)
+    request.referrer
+  end
+
+  def after_sign_up_path_for(resource)
+    request.referrer
+  end
+
 
   private
 
