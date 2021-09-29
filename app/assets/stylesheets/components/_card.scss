@@ -27,11 +27,8 @@
   left: 10px;
   position: absolute;
   margin: 4px;
-
-  justify-content: space-around;
   align-items: center;
   justify-content: flex-start;
-  // width: 1600px;
   // font-size: 22px;
   // color: white;
   // font-weight: bolder;
@@ -67,10 +64,10 @@
 }
 
 .resultcontent {
-  position: absolute;
-  top: 220px;
-  width: 100%;
+  // position: absolute;
+  // top: 540px;
   left: 10px;
+  width: 100%;
 }
 
 .resultsearchbox  {
@@ -179,4 +176,27 @@
 
 a:hover {
   text-decoration: none;
+}
+
+/* Copy URL to clipboard feature */
+.copy-to-clipboard {
+  border: 1px solid;
+  border-color: #0ABAB5;
+  border-radius: 4px;
+  width: 450px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.copy-to-clipboard .form-control {
+  height: 42px;
+  width: 80%;
+}
+
+.copy-to-clipboard .btn-flat {
+  height: 42px;
+  width: 50%;
 }

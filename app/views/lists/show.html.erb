@@ -1,4 +1,12 @@
+<%= stylesheet_pack_tag 'application' %>
 <%= render 'shared/navsearchbar' %>
+
+<div class="d-flex justify-content-start">
+  <h1>My list: <%= @list.name %></h1>
+  <%= link_to "Back to Dashboard", user_lists_path(current_user), class:"btn btn-flat my-1 mx-3" %>
+</div>
+<!-- Map wrapper -->
+<%= render 'shared/listmap', markers: @markers %>
 <!-- Restaurants search results -->
 <div class="resultcontent">
   <div class="container">
@@ -19,6 +27,3 @@
     </div>
   </div>
 </div>
-
-<!-- Side bar to add to list -->
-<%= render 'shared/sidebar', restaurants: @list.restaurants %>

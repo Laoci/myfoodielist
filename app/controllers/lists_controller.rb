@@ -12,6 +12,10 @@ class ListsController < ApplicationController
   def show
     @user = current_user
     @list = List.find(params[:id])
+    @markers = @list.restaurants.map do |restaurant|
+      window = {info_window: render_to_string(partial: "shared/info_window", locals: {restaurant: restaurant})}
+      JSON.parse(restaurant.coordinates).merge(window)
+    end
   end
 
   def create
@@ -29,7 +33,7 @@ class ListsController < ApplicationController
     @list = List.new(name: list_title, user: current_user)
     @user = current_user
     @list.name = list_title
-    @list.restaurants << restaurant
+    (@list.restaurants << restaurant) unless @list.restaurants.include?(restaurant)
     @list.user = current_user
     if @list.save
       flash[:alert] = "Your list is saved"

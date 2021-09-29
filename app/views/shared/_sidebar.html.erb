@@ -10,8 +10,6 @@
   <% if current_user %>
     <button class="btn btn-success btn-block">
       <%= link_to "Create new list", new_user_list_path(current_user), data: {action: "click->list#createNewList"} %>
-      <%# <%= link_to "Save this list", new_user_list_path(@list) %>
-      <%# save to new list %>
     </button>
   <% else %>
  <button class="btn btn-warning dropdown-toggle btn-block mb-3" type="button" id="drop-down" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

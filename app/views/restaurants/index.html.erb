@@ -1,8 +1,5 @@
 <div data-controller="list">
-
-  <%= render 'shared/navsearchbar' %>
-
-  <h1>Restaurants</h1>
+<%= render 'shared/navsearchbar' %>
 
 <div class="d-flex justify-content-start">
     <%= simple_form_for :results, url: results_path, method: :get do |f| %>
