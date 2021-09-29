@@ -1,3 +1,4 @@
+// Restaurants cards
 .card-resto {
   width: 250px;
   overflow: hidden;
@@ -16,11 +17,6 @@
 }
 
 .resto-grid {
-  // background-size: cover;
-  // background-position: center;
-  // height: 150px;
-  // border-radius: 1px;
-  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 80%;
   display: flex;
   flex-wrap: wrap;
@@ -29,10 +25,6 @@
   margin: 4px;
   align-items: center;
   justify-content: flex-start;
-  // font-size: 22px;
-  // color: white;
-  // font-weight: bolder;
-  // text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
 
 .card-resto h2 {
@@ -62,7 +54,7 @@
   top: -20px;
   width: 40px;
 }
-
+// Results content
 .resultcontent {
   // position: absolute;
   // top: 540px;
@@ -104,12 +96,11 @@
   border-radius: 8px;
   background-color: rgba(255,255,255,0.9);
 }
-
+// Cards for dashboard
 .card-list {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  margin: 8px;
 }
 
 .card-list .list-square {
@@ -123,7 +114,7 @@
 .card-list .list-square-new {
   height: 200px;
   width: 100%;
-  background-color: #F58634;
+  background-color: #ED8A99;
   color: white;
   text-align: center;
 }
@@ -199,4 +190,16 @@ a:hover {
 .copy-to-clipboard .btn-flat {
   height: 42px;
   width: 50%;
+}
+
+
+.dashboard-card
+{
+  margin-top:20px;
+  padding-right:10px;
+  text-shadow: 1px 1px #000;
+}
+
+.dashbdashboard-card h2{
+  color: white;
 }
