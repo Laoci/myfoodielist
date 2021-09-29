@@ -30,6 +30,7 @@ class RestaurantsController < ApplicationController
     @query = params[:query]
     @restaurant = Restaurant.find(params[:id])
     @review = Review.new
+    @calendar = Calendar.new
     @tag = Tag.new
     @explore = Explore.new
   end

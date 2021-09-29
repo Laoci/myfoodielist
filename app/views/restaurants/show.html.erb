@@ -62,40 +62,22 @@
         </p>
     </div>
 
-    <!-- Start Calendar WORK IN PROGRESS -->
-    <div class="d-flex justify-content-end">
-                    <button
-                    type="button"
-                    class="btn btn-info"
-                    data-toggle="modal"
-                    data-target="#schedule_modal">
-                    Schedule your visit
-                </button>
-    </div>
-    <div id='schedule_modal' class='modal fade' aria-labelledby='schedule_modal' aria-hidden='true'>
-<div class="container">
-  <div class="form-wrapper" style="position: fixed; top: 200px; right: 20px; width: 400px; margin: 0 auto; background-color: white; border-radius: 20px; padding: 5px 5px 5px 5px">
-    <h2> Schedule a date </h2>
-
-    <%= simple_form_for :search, method: "get" do |f| %>
-      <%= f.input :starts_at, as: :string, required: false, input_html: {class: "datepicker"} %>
-       <%= f.button :submit, "Add", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
-    </div>
-
-
-    <!-- END Calendar -->
 
     <div class="d-flex justify-content-between">
-        <h3><%= @restaurant.name %>
-            Reviews:</h3>
-        <div class="d d-flex justify-content-end-flex justify-content-end">
+        <h3><%= @restaurant.name %></h3>
+        <div class="d-flex justify-content-flex-end">
+            <%# WHY THERE'RE MULTIPLE ELSE HERE? %>
             <!-- User logged in -->
             <%- if current_user %>
+             <!-- Start Calendar  -->
+            <%= simple_form_for [@restaurant, @calendar], html: { class: 'form-inline mx-4 my-0'} do |f| %>
+              <%= f.input :scheduled_date, html5: true, label: false  %>
+              <%= f.button :submit, value: "Schedule your visit", class: 'btn btn-secondary' %>
+            <% end %>
+
+            <!-- END Calendar -->
             <button
-                class="btn btn-warning dropdown-toggle mb-3"
+                class="btn btn-warning dropdown-toggle"
                 type="button"
                 id="drop-down"
                 data-toggle="dropdown"
@@ -155,6 +137,7 @@
     </div>
 
     <ul class="list-review">
+        <h4> Reviews from other Foodies:</h4>
         <% rest_array = @restaurant.reviews.last(3) %>
         <% rest_array.each do |review| %>
         <div>

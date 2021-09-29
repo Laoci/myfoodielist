@@ -1,0 +1,13 @@
+<%= render 'shared/navsearchbar' %>
+<h1>My scheduled visits</h1>
+<div class="scheduled-list">
+  <div class="border-line">Today's Date: <span id="datetime"></span>
+  </div>
+</div>
+<%= render @calendars %>
+
+
+<script>
+var dt = new Date();
+document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+</script>
