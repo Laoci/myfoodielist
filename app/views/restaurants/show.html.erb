@@ -46,21 +46,20 @@
 
 
     <div class="d-flex justify-content-between">
-        <h3><%= @restaurant.name %>
-            Reviews:</h3>
-        <div class="d d-flex justify-content-end-flex justify-content-end">
+        <h3><%= @restaurant.name %></h3>
+        <div class="d-flex justify-content-flex-end">
             <%# WHY THERE'RE MULTIPLE ELSE HERE? %>
             <!-- User logged in -->
             <%- if current_user %>
-             <!-- Start Calendar WORK IN PROGRESS -->
-            <%= simple_form_for [@restaurant, @calendar], html: { class: 'form-inline' } do |f| %>
+             <!-- Start Calendar  -->
+            <%= simple_form_for [@restaurant, @calendar], html: { class: 'form-inline mx-4 my-0'} do |f| %>
               <%= f.input :scheduled_date, html5: true, label: false  %>
               <%= f.button :submit, value: "Schedule your visit", class: 'btn btn-secondary' %>
             <% end %>
 
             <!-- END Calendar -->
             <button
-                class="btn btn-warning dropdown-toggle mb-3"
+                class="btn btn-warning dropdown-toggle"
                 type="button"
                 id="drop-down"
                 data-toggle="dropdown"
@@ -120,6 +119,7 @@
     </div>
 
     <ul class="list-review">
+        <h4> Reviews from other Foodies:</h4>
         <% rest_array = @restaurant.reviews.last(3) %>
         <% rest_array.each do |review| %>
         <div>
