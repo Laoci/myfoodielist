@@ -6,7 +6,7 @@
         <% @list.restaurants.each do |restaurant| %>
           <%= link_to restaurant_path(restaurant, query: @query_value) do %>
           <div class="card-resto">
-          <img src="https://source.unsplash.com/400x250/?restaurant" alt="random pictures of restuarants will be shown" />
+          <%= cl_image_tag restaurant.photo.key, height: 200, width: 300, crop: :fill %>
             <div>
               <h2 class="ml-2"><%= restaurant.name %></h2>
               <p>Restaurant address: <strong><%= restaurant.address %></strong></p>
