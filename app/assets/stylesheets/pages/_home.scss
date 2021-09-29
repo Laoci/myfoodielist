@@ -2,16 +2,28 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 250px 0;
-  max-height: 30%;
+  padding: 150px 0;
+  height: 30%;
+  border-radius: 0 0 85% 85% / 30%;
 }
 
 body h2 {
-  padding: 24px;
+  color: #0abab5;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  text-shadow: 1px 1px #008985;
+  cursor: default;
+}
+
+body p {
+  color: #008985;
+  padding-left: 16px;
+  cursor: default;
 }
 
 .banner h1 {
-  margin: 0;
+  margin-left: 15px;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
@@ -19,6 +31,7 @@ body h2 {
 }
 
 .banner p {
+  margin-left: 15px;
   font-size: 20px;
   color: white;
   opacity: 0.7;
@@ -26,10 +39,10 @@ body h2 {
 }
 
 .searchButton {
-  width: 40px;
+  width: 15%;
   height: 36px;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
+  border: 1px solid #008985;
+  background: #0abab5;
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
@@ -40,7 +53,7 @@ body h2 {
 .wrap{
   width: 30%;
   position: absolute;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

@@ -33,6 +33,7 @@ class RestaurantsController < ApplicationController
     @calendar = Calendar.new
     @tag = Tag.new
     @explore = Explore.new
+    @markers = [JSON.parse(@restaurant.coordinates)]
   end
 
   def new

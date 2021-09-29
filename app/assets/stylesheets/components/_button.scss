@@ -13,7 +13,7 @@ button.nav-link {
 }
 
 .btn-flat {
-  color: #00AF91;
+  color: #0ABAB5;
   padding: 8px 24px;
   border-radius: 4px;
   background: white;
@@ -21,14 +21,10 @@ button.nav-link {
 }
 
 .btn-flat:hover {
-  background: white;
-  color: #00AF91;
+  background: #0ABAB5;
+  color: white;
 }
 
-.btn-gradient-1 {
-  border-width: 8px;
-  background-color: #fefefe;
-  border-style: solid;
-  border-image: linear-gradient(to right, darkblue, darkorchid) 1;
-  margin-top: 150px;
-}
+// .searchButton {
+//   background: #0abab5 !important;
+// }

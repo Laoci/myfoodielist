@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
 
-  # users routes
+  # users routes (Devise)
   devise_for :users
-  get "users/:id/map", to: "users#mapping", as: :user_map
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
