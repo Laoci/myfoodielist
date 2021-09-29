@@ -40,7 +40,8 @@ class ListsController < ApplicationController
       redirect_to user_lists_path(user_id: @list.user_id)
     else
       flash[:alert] = "Error"
-      render :new
+      redirect_to results_path(@restaurant)
+      # render 'shared/sidebar', restaurants: @restaurants
     end
   end
 
