@@ -4,8 +4,11 @@
   <div class="border-line">Today's Date: <span id="datetime"></span>
   </div>
 </div>
-<%= render @calendars %>
-
+<% @calendars.each do |cal| %>
+  <% if cal.scheduled_date %>
+    <%= render "calendars/calendar", calendar: cal %>
+  <% end %>
+<% end %>
 
 <script>
 var dt = new Date();

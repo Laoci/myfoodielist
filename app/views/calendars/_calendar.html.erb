@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row hidden-md-up">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-block">
-          <h3><%= calendar.scheduled_date %></h3>
-          <h4>visiting <%= calendar.restaurant.name %> -</h4>
-          <p class="card-text p-y-1">Some quick example text to build on the card title .</p>
+    <div class="col-8">
+      <div class="calendar">
+        <div class="calendar-date">
+          <h3><strong><%= calendar.scheduled_date.to_formatted_s(:rfc822) %></strong></h3>
+        </div>
+        <div class="calendar-details">
+          <h4><%= calendar.restaurant.name %></h4>
+          <p><%= calendar.restaurant.address %></p>
         </div>
       </div>
     </div>
