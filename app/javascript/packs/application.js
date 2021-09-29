@@ -24,9 +24,6 @@ import { initList } from '../plugins/init_list'
 import { showList } from '../plugins/show_list'
 import { initMapbox } from '../plugins/init_mapbox';
 
-import { initFlatpickr } from "../plugins/flatpickr";
-
-initFlatpickr();
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 

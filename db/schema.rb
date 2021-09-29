@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_09_28_110612) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,17 +43,22 @@ ActiveRecord::Schema.define(version: 2021_09_28_110612) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-
   create_table "calendars", force: :cascade do |t|
     t.date "scheduled_date"
-  create_table "explores", force: :cascade do |t|
-    t.boolean "explored", default: false
     t.bigint "restaurant_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["restaurant_id"], name: "index_calendars_on_restaurant_id"
     t.index ["user_id"], name: "index_calendars_on_user_id"
+  end
+
+  create_table "explores", force: :cascade do |t|
+    t.boolean "explored", default: false
+    t.bigint "restaurant_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["restaurant_id"], name: "index_explores_on_restaurant_id"
     t.index ["user_id"], name: "index_explores_on_user_id"
   end
