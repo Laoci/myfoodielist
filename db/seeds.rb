@@ -35,8 +35,9 @@ keywords.each do |keyword|
     address = "#{resto['address']['block']} #{resto['address']['streetName']}"
     genre = resto["cuisine"].empty? ? keyword : resto["cuisine"]
     postal_code = resto["address"]["postalCode"]
-    coordinates = JSON.generate(resto["location"])
-
+    unless resto["location"]["latitude"].zero? || resto["location"]["longitude"].zero?
+      coordinates = JSON.generate(resto["location"])
+    end
     # Call TIH getMediaByUUID API to get a restaurant photo (thumbnail) by its uuid
     # If a photo (thumbnail) uuid exists, get the photo url
     begin
@@ -47,7 +48,7 @@ keywords.each do |keyword|
       thumb_file = nil
     end
 
-    if thumb_file
+    if thumb_file && coordinates
       # Create a new restaurant instance, attach the photo and save
       new_restaurant = Restaurant.new(name: name, address: address, genre: genre, postal_code: postal_code, coordinates: coordinates)
       new_restaurant.photo.attach(io: thumb_file, filename: "#{name}.jpg", content_type: 'image/jpg')
