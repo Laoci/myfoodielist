@@ -68,7 +68,7 @@ puts "Seeding users..."
   new_user = User.new(username: username, email: email, password: password)
   puts "#{username} saved, Email: #{email}, PW: #{password}" if new_user.save
 end
-test_user = User.new(username: "John Doe", email: "johndoe@gmail.com", password: 123456)
+test_user = User.new(username: "John Smith", email: "johnsmith@gmail.com", password: 123456)
 test_user.save!
 puts "Users created"
 
