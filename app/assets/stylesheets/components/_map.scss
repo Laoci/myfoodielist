@@ -1,0 +1,23 @@
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: left;
+  color: #00AF91;
+}
+
+.mapboxgl-popup-content h2 {
+    font-family: Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.mapboxgl-popup-content p {
+    font-family: Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 12px;
+}

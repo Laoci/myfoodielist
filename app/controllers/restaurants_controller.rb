@@ -56,8 +56,8 @@ class RestaurantsController < ApplicationController
   end
 
   def filter_restaurants
-    filter_query = "#{@sql_query} OR tags.name @@ :sub_query"
-    @restaurants = Restaurant.joins(:tags).where(filter_query, query: "%#{@query_value}%", sub_query: "%#{@filter_by}%").distinct
+    filter_query = "tags.name @@ :sub_query"
+    @restaurants = @restaurants.joins(:tags).where(filter_query, sub_query: "%#{@filter_by}%").distinct
   end
 
   def sort_restaurants
