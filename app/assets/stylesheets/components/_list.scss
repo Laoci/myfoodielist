@@ -1,13 +1,4 @@
-// .list-group {
-//   position: fixed;
-//   top: 258px;
-//   width: 280px;
-//   overflow: hidden;
-//   background: white;
-//   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-//   margin-top: 8px;
-//   border-radius: 2px;
-// }
+
 
 .btn6, .btn6:link, .btn6:visited {
   display: flex;
@@ -33,3 +24,20 @@
     border-radius: 30px;
   }
 }
+
+.list-grid {
+  display: grid;
+  grid-template-columns:minmax(300px,1fr);
+  grid-gap:2rem;
+}
+
+
+.card-list .list-square {
+  margin-block: 8px;
+}
+
+.list-square  {
+  background-color: #0abab5 !important;
+}
+
+
