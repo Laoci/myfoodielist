@@ -3,9 +3,15 @@
   <%= render 'shared/navsearchbar' %>
   <div class="container-fluid mt-4">
     <% if @query_value == "" %>
-      <h1>Displaying all Restaurants</h1>
+      <div>
+        <h1>Displaying all Restaurants</h1>
+        <p class="pl-2">Showing <%= @restaurants.count %> results</p>
+      </div>
     <% else %>
-      <h1>Displaying Results for <%= @query_value %></h1>
+      <div>
+        <h1>Displaying Results for <%= @query_value %></h1>
+        <p class="pl-2">Showing <%= @restaurants.count %> results</p>
+      </div>
     <% end %>
 
   <div class="d-flex justify-content-start ml-2">
