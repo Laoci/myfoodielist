@@ -1,14 +1,20 @@
+<%# Puts nav bar right on top %>
 <%= render 'shared/navsearchbar' %>
-<h1>My scheduled visits</h1>
+
+<h1 class="teal">My scheduled visits</h1>
 <div class="scheduled-list">
-  <div class="border-line">Today's Date: <span id="datetime"></span>
+  <div class="cal-container">
+    <div class="dateholder">Today's Date: <span id="datetime"></span>
+    </div>
+  </div>
+    <% @calendars.each do |cal| %>
+      <% if cal.scheduled_date %>
+        <%= render "calendars/calendar", calendar: cal %>
+      <% end %>
+    <% end %>
   </div>
 </div>
-<% @calendars.each do |cal| %>
-  <% if cal.scheduled_date %>
-    <%= render "calendars/calendar", calendar: cal %>
-  <% end %>
-<% end %>
+<%= link_to "Back to Dashboard", user_lists_path(current_user), class:"btn btn-flat my-1 mx-3" %>
 
 <script>
 var dt = new Date();
