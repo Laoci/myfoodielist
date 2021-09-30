@@ -35,14 +35,17 @@
           <div class="card-resto">
           <!-- begin inner container -->
             <div class="p-3">
+              <h2 class="text-left rest-name"><u><%= restaurant.name.first(60) %></u></h2>
             <!-- begins contains image and desc -->
               <div class="d-flex">
                 <!-- Image -->
-                <%= cl_image_tag restaurant.photo.key, height: 240, width: 320, crop: :fill %>
+                <%= cl_image_tag(restaurant.photo.key, :transformation=>[
+                  {height: 160, width: 240, crop: :fill},
+                  {:radius=>12}]) %>
+
                 <!-- Restaurant Info -->
                 <div class="ml-4">
                   <div>
-                    <h2><%= restaurant.name %></h2>
                     <p>Address: <strong><%= restaurant.address %></strong></p>
                     <p>Postal code: <strong><%= restaurant.postal_code %></strong></p>
                     <p>Cuisine type: <strong><%= restaurant.genre %></strong></p>
@@ -60,14 +63,14 @@
             <!-- end of image and desc div -->
 
             <!-- begins contains two links -->
-              <div class="d-flex justify-content-around align-content-center flex-wrap m-3">
+              <div class="img-info p-2 rest-info">
                 <div class="btn btn-outline-primary">
                   <div class="fas fa-laptop">
                     <%= link_to "See Details", restaurant_path(restaurant, query: @query_value) %>
                   </div>
                 </div>
               <!-- "Plus Button" -->
-                <div class="btn btn-outline-primary">
+                <div class="btn btn-outline-primary plus-btn">
                   <div  class="fas fa-plus add-to-list"
                         data-restaurant-id=<%=restaurant.id%>
                         data-restaurant-name="<%=restaurant.name%>">
@@ -83,5 +86,7 @@
     </div>
   </div>
   <!-- Side bar to add to list -->
-  <%= render 'shared/sidebar', restaurants: @restaurants %>
+  <div class="d-flex">
+    <%= render 'shared/sidebar', restaurants: @restaurants %>
+  </div>
 </div>
