@@ -9,7 +9,7 @@
   </table>
   <!-- user logged in -->
   <% if current_user %>
-    <button class="btn btn-success btn-block">
+    <button id="copy-button" class="btn border btn-flat btn-block">
       <%= link_to "Create new list", new_user_list_path(current_user), data: {action: "click->list#createNewList"} %>
     </button>
   <% else %>
