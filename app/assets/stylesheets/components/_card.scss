@@ -116,46 +116,6 @@ p {
   border-radius: 8px;
   background-color: rgba(255,255,255,0.9);
 }
-// Cards for dashboard
-.card-list {
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.card-list .list-square {
-  height: 200px;
-  width: 100%;
-  background-color: #00AF91;
-  color: white;
-  text-align: center;
-}
-
-.card-list .list-square-new {
-  height: 200px;
-  width: 100%;
-  background-color: #ED8A99;
-  color: white;
-  text-align: center;
-}
-
-.card-list h2 {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 40px;
-  font-weight: bold;
-}
-
-.card-list h3 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-list p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
 
 .card-list .card-list-infos {
   padding: 16px;
@@ -202,16 +162,4 @@ a:hover {
 .copy-to-clipboard .btn-flat {
   height: 42px;
   width: 50%;
-}
-
-
-.dashboard-card
-{
-  margin-top:20px;
-  padding-right:10px;
-  text-shadow: 1px 1px #000;
-}
-
-.dashbdashboard-card h2{
-  color: white;
 }

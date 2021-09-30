@@ -1,15 +1,14 @@
 require 'open-uri'
 require 'json'
 require 'faker'
-require 'pry-byebug'
 
 # Clear the database
 puts "Clearing database..."
+Tag.destroy_all
 Restaurant.destroy_all
 User.destroy_all
 Review.destroy_all
 List.destroy_all
-Tag.destroy_all
 puts "Database cleared"
 puts "Seeding restaurants..."
 
