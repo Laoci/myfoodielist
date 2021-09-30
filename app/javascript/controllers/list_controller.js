@@ -3,7 +3,7 @@ import { csrfToken } from '@rails/ujs'
 import { showList, getList } from '../plugins/show_list'
 
 export default class extends Controller {
-  static targets = [ "namelistnew", "temp" ];
+  static targets = [ "namelistnew" ];
 
   connect() {
     console.log("connected");
