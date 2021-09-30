@@ -3,7 +3,7 @@ const handleClickFunction = (event) => {
   const restName = event.currentTarget.dataset.restaurantName;
   const userId = event.currentTarget.dataset.userId;
   addToLocalStorage(restId, restName, userId);
-  location.reload();
+  showList();
 }
 
 const initList = () => {
