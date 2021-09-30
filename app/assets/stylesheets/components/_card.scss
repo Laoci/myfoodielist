@@ -1,20 +1,56 @@
 // Restaurants cards
 .card-resto {
-  width: 640px;
-  height: 320px;
+  width: 520px;
+  border-radius: 12px;
+  height: 280px;
   overflow: hidden;
-  background: white;
+  background: rgb(248, 246, 246);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin: 8px;
-  border-radius: 2px;
-  cursor:pointer;
+  border: 2px solid rgb(122, 121, 121);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: white;
+}
+
+.rest-name {
+  padding-left: 0 !important;
+}
+
+// .rest-info {
+//   text-decoration: none;
+//   color: black;
+// }
+
+p {
+  padding-left: 0 !important;
+}
+
+.img-info {
+  display: flex;
+  // flex-wrap:nowrap;
+  justify-content: space-around;
+  align-self: flex-end;
+  margin-top: 8px;
+  border-top: 1px solid grey;
+  // align-content: flex-end;
+  // position: relative;
+  // bottom: 0;
+  // flex-grow: 1;
+  // border-collapse: collapse;
 }
 
 .card-resto>img {
-  height: 240px;
-  width: 200px;
+  height: 200px;
+  width: 160px;
   object-fit: cover;
-  cursor:pointer;
+  // cursor:pointer;
 }
 
 .resto-grid {
@@ -32,14 +68,14 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0;
-  cursor:pointer;
+  // cursor:pointer;
 }
 
 .card-resto p {
   font-size: 12px;
   opacity: .7;
   margin: 8px;
-  cursor:pointer;
+  // cursor:pointer;
 }
 
 .card-resto .card-resto-infos {
@@ -47,7 +83,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
-  cursor:pointer;
+  // cursor:pointer;
 }
 
 .card-resto-infos .card-resto-user {
@@ -81,19 +117,20 @@
   background-color: lightgreen;
   border-radius: 40px;
   padding: 5px 5px 5px 5px;
-  cursor: pointer  ;
+  // cursor: pointer  ;
   top: 8px;
 }
 
 .resultsidebar {
   padding: 4px;
+  margin: 12px;
   z-index: 20;
   top: 128px;
   right: 20px;
   width: 280px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  position: fixed;
-  margin-left: 616px;
+  // position:relative;
+  margin-left: auto;
   border-radius: 8px;
   background-color: rgba(255,255,255,0.9);
 }
