@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row card-list">
       <% @lists.each do |list| %>
-        <div class="card col-lg-4">
+        <div class="card col-12 col-sm-4 col-lg-3 mx-2">
           <%= link_to user_list_path(@user, list) do %>
           <div class="list-square dashboard-card">
             <h2><%= list.name %></h2>
@@ -17,10 +17,10 @@
           </div>
         </div>
       <% end %>
-      <div class="card col-lg-4">
+      <div class="card col-12 col-sm-4 col-lg-3 mx-2">
         <%= link_to results_path do %>
         <div class="list-square-new" style='margin-top:20px; padding-right:10px'>
-          <h2>Click here to add list</h2>
+          <h2>Add List</h2>
           <h2 class="add-icon"><i class="fas fa-plus"></i></h2>
         </div>
         <% end %>
