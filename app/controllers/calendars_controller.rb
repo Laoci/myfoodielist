@@ -11,7 +11,7 @@ class CalendarsController < ApplicationController
     @calendar.restaurant = Restaurant.find(params[:restaurant_id])
 
     if @calendar.save
-      redirect_to calendars_path
+      redirect_to user_calendars_path(current_user)
     else
       render 'restaurants/show'
     end
@@ -20,6 +20,6 @@ class CalendarsController < ApplicationController
   private
 
   def calendar_params
-    params.require(:calendar).permit(:scheduled_date)
+    params.require(:calendar).permit(:scheduled_date, :restaurant)
   end
 end

@@ -1,1 +1,25 @@
+.calendar {
+  border: 1px solid;
+  border-color: #0ABAB5;
+  border-radius: 16px;
+  background-color: white;
+  height: 108px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 
+.calendar-date {
+  background-color: #0ABAB5;
+  border-radius: 16px;
+  padding: 10px;
+  text-align: center;
+}
+
+.calendar-details {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}

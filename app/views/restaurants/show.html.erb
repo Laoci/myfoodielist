@@ -74,6 +74,7 @@
             <%- if current_user %>
              <!-- Start Calendar  -->
             <%= simple_form_for [@restaurant, @calendar], html: { class: 'form-inline mx-4 my-0'} do |f| %>
+              <input type="hidden" name="restaurant" value="<%= @restaurant %>">
               <%= f.input :scheduled_date, html5: true, label: false  %>
               <%= f.button :submit, value: "Schedule your visit", class: 'btn btn-secondary' %>
             <% end %>

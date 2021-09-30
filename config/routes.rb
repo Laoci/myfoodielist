@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   # temp list routes
   post "temp_list", to: "lists#show"
 
-  resources :calendars, only: [:index]
-
   # reviews route
   resources :restaurants do
     resources :reviews, only: [:show, :create, :new]
@@ -33,6 +31,11 @@ Rails.application.routes.draw do
   # explores route
   resources :restaurants do
     resources :explores
+  end
+
+  # calendars route
+  resources :users do
+    resources :calendars, only: [:index]
   end
 
 end
