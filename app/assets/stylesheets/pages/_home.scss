@@ -76,15 +76,21 @@ p.p-home{
   font-size: 0.75em;
 }
 
+// Carousel assets
 #carouselExampleIndicators  {
-  height: 250px;
-  width: 400px;
-  border-radius: 8px;
+  height: 200px;
+  width: 300px;
 }
 
 .carousel-slide {
   position: absolute;
   right: 0px;
+}
+
+.carousel-inner  {
+  height: 200px;
+  width: 300px;
+  object-fit: fill;
 }
 
 // Fancy button for list

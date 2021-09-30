@@ -52,11 +52,11 @@
                 <!-- Restaurant Info -->
                 <div class="ml-4">
                   <div>
-                    <p>Address: <strong><%= restaurant.address %></strong></p>
-                    <p>Postal code: <strong><%= restaurant.postal_code %></strong></p>
-                    <p>Cuisine type: <strong><%= restaurant.genre %></strong></p>
-                    <p>Average rating: <strong><%= restaurant.avg_rating %>/5.0</strong></p>
-                    <p>Tags:
+                    <p class="pl-2">Address: <strong><%= restaurant.address %></strong></p>
+                    <p class="pl-2">Postal code: <strong><%= restaurant.postal_code %></strong></p>
+                    <p class="pl-2">Cuisine type: <strong><%= restaurant.genre %></strong></p>
+                    <p class="pl-2">Average rating: <strong><%= restaurant.avg_rating %>/5.0</strong></p>
+                    <p class="pl-2">Tags:
                       <% if restaurant.tag_names.empty? %>
                         <strong><%= "None" %></strong>
                       <% else %>
