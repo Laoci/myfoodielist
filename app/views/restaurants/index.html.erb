@@ -1,14 +1,14 @@
 <div data-controller="list">
 
   <%= render 'shared/navsearchbar' %>
-  <div class="container-fluid">
+  <div class="container-fluid mt-4">
     <% if @query_value == "" %>
       <h1>Displaying all Restaurants</h1>
     <% else %>
       <h1>Displaying Results for <%= @query_value %></h1>
     <% end %>
 
-  <div class="d-flex justify-content-start">
+  <div class="d-flex justify-content-start ml-2">
     <%= simple_form_for :results, url: results_path, method: :get do |f| %>
       <input type="hidden" name="query" value="<%= @query_value %>">
       <select name="sort_by" class="btn-flat my-1">
@@ -23,14 +23,14 @@
         <option <%= params["sort_order"] == "desc" ? "selected":"" %> value="desc">Descending</option>
       </select>
       <input type="text" name="filter_by" placeholder="<%= params["filter_by"] ? "#{params["filter_by"]}" : "Filter" %>" class="btn-flat my-1">
-      <button class="btn btn-flat my-1" type="submit">Reorganize Results</button>
+      <button class="btn btn-flat ml-2" type="submit">Reorganize Results</button>
     <% end %>
   </div>
 
   <!-- Restaurants search results -->
   <div class="container">
 
-    <div class="resto-grid">
+    <div class="resto-grid position-absolute">
       <% @restaurants.each do |restaurant| %>
           <div class="card-resto">
           <!-- begin inner container -->
@@ -64,13 +64,13 @@
 
             <!-- begins contains two links -->
               <div class="img-info p-2 rest-info">
-                <div class="btn btn-outline-primary">
-                  <div class="fas fa-laptop">
+                <div id="copy-button" class="btn border btn-flat">
+                  <div class="fas fa-info-circle">
                     <%= link_to "See Details", restaurant_path(restaurant, query: @query_value) %>
                   </div>
                 </div>
               <!-- "Plus Button" -->
-                <div class="btn btn-outline-primary plus-btn">
+                <div id="copy-button" class="btn border btn-flat">
                   <div  class="fas fa-plus add-to-list"
                         data-restaurant-id=<%=restaurant.id%>
                         data-restaurant-name="<%=restaurant.name%>">
@@ -84,7 +84,9 @@
           </div>
         <% end %>
     </div>
+    <!-- End of cards grid -->
   </div>
+  <!-- End of card container -->
   <!-- Side bar to add to list -->
     <%= render 'shared/sidebar', restaurants: @restaurants %>
 </div>

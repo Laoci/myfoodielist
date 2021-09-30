@@ -1,6 +1,8 @@
 // Restaurants cards
 .card-resto {
   width: 520px;
+  border: 1px solid !important;
+  border-color: #0ABAB5 !important;
   border-radius: 12px;
   height: 280px;
   overflow: hidden;
@@ -10,14 +12,18 @@
   border: 2px solid rgb(122, 121, 121);
 }
 
-a {
-  text-decoration: none;
-  color: black;
+h1 {
+  margin-left: 6px;
 }
 
-a:hover {
-  color: white;
+a {
+  text-decoration: none;
+  color: inherit;
 }
+
+// a:hover {
+//   color: white;
+// }
 
 .rest-name {
   padding-left: 0 !important;
@@ -58,7 +64,6 @@ p {
   display: flex;
   flex-wrap: wrap;
   left: 10px;
-  position: absolute;
   margin: 4px;
   align-items: center;
   justify-content: flex-start;
@@ -211,8 +216,8 @@ a:hover {
 .copy-to-clipboard {
   border: 1px solid;
   border-color: #0ABAB5;
-  border-radius: 4px;
-  width: 450px;
+  border-radius: 12px !important;
+  width: 396px;
   height: 300px;
   display: flex;
   flex-direction: column;
