@@ -18,6 +18,7 @@
       <div class="row">
         <div class="col-lg-4">
           <div class="card-shop" style="width: 16rem;">
+          <a href="/results?query=spanish">
             <img src="https://images.unsplash.com/photo-1571167366136-b57e07761625?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" class="card-img-top" alt="spanish food list" />
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
@@ -26,10 +27,12 @@
               <h3>Spanish</h3>
               <p class="lead mb-0">Enjoy the best tapas and iberico</p>
             </div>
+          </a>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="card-shop" style="width: 16rem;">
+          <a href="/results?query=indonesian">
           <img src="https://images.unsplash.com/photo-1539755530862-00f623c00f52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fHJpY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="indonesian food list"/>
               <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                 <div class="features-icons-icon d-flex">
@@ -39,16 +42,18 @@
                 <p class="lead mb-0">The search for the nicest nasi padang continues and thes line is to see</p>
               </div>
             </div>
+          </a>
           </div>
         <div class="col-lg-4">
           <div class="card-shop" style="width: 16rem;">
+          <a href="/results?query=local">
           <img src="https://images.unsplash.com/photo-1605464370799-719bc1bfba78?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZmF2b3VyaXRlJTIwaGVhcnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="die die must eat food list" />
             <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
               <div class="features-icons-icon d-flex">
                 <i class="icon-screen-desktop m-auto text-primary"></i>
               </div>
-              <h3>Die Die Must Eat!</h3>
-              <p class="lead mb-0">A list of our favourites!</p>
+              <h3>Go local!</h3>
+              <p class="lead mb-0">Try this local selection!</p>
             </div>
           </div>
         </div>
@@ -56,21 +61,49 @@
     </div>
   </section>
 <%# Foodie How-To starts here %>
-  <h2 class='teal'>How To Use My Foodie List?</h2>
-  <section class="features-icons bg-light text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="card-shop" style="width: 16rem;">
-            <img src="https://images.unsplash.com/photo-1571167366136-b57e07761625?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" class="card-img-top" alt="spanish food list" />
-            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-              <div class="features-icons-icon d-flex">
-                <i class="icon-screen-desktop m-auto text-primary"></i>
-              </div>
-              <h3>Spanish</h3>
-              <p class="lead mb-0">Enjoy the best tapas and iberico</p>
+  <h2>How To Use My Foodie List?</h2>
+  <p>Some simple steps to start your food trail</p>
+  <section>
+  <div container>
+    <div class="d-flex justify-content-center">
+      <div class="col-lg-4">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <%= image_tag "searchss.png", class: 'd-block w-100' %>
+            </div>
+            <div class="carousel-item">
+              <%= image_tag "searchss.png", class: 'd-block w-100' %>
+            </div>
+            <div class="carousel-item">
+              <%= image_tag "searchss.png", class: 'd-block w-100' %>
             </div>
           </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-
+        </div>
+        <div class="col-lg-4">
+          <h3>Step 1</h3>
+          <p>Search for your food cuisine type</p>
+          <h3>Step 2</h3>
+          <p>Add restaurant to list</p>
+          <h3>Step 3</h3>
+          <p>Register to save the restaurant to a list</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
 </body>
