@@ -29,6 +29,8 @@ export default class extends Controller {
     // call fetch(`/users/:user_id/lists/new`)
     if (listTitle.length > 15) {
       alert("Maximum 15 letters!")
+    } else if (listTitle.length < 1) {
+      alert("Please give your list a name!")
     } else {
       fetch(`/users/${userIdNum}/lists`, {
         method: 'POST',
