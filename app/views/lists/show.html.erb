@@ -1,6 +1,7 @@
 <%= stylesheet_pack_tag 'application' %>
 <%= render 'shared/navsearchbar' %>
 
+
 <div class="d-flex justify-content-start">
   <h1>My list: <%= @list.name %></h1>
   <%= link_to "Back to Dashboard", user_lists_path(current_user), class:"btn btn-flat my-1 mx-3" %>
