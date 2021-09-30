@@ -1,169 +1,202 @@
 <%= stylesheet_pack_tag 'application' %>
 <%= render 'shared/navsearchbar' %>
 
+<h1><%= @restaurant.name %></h1>
+
+<!-- Start Main-Body -->
 <div class="container mt-4">
-    <div class="d-flex justify-content-between mb-2">
-        <h1><%= @restaurant.name %></h1>
-
-  <!-- User logged in -->
-  <% if current_user %>
-
-    <% if current_user.explores.one? { |explored| explored.restaurant == @restaurant } %>
-      <div>
-        <button type="button" class="btn btn-success" disabled>Explored!</button>
+  <!-- Start Row 1 -->
+  <div class="row">
+    <!-- Start Photo-and-Details (Section 1) -->
+    <div class="col-8 shadow bg-white d-flex justify-content-around resto-section-1 mb-4 mr-2">
+      <!-- Start Photo-->
+      <%= cl_image_tag @restaurant.photo.key, height: 300, width: 500 %>
+      <!-- End Photo -->
+      <!-- Start Details -->
+      <div class="resto-details d-flex justify-content-center">
+        <p>Address: <strong><%= @restaurant.address %></strong></p>
+        <p>Postal code: <strong><%= @restaurant.postal_code %></strong></p>
+        <p>Cuisine type: <strong><%= @restaurant.genre %></strong></p>
+        <p>Average rating: <strong><%= @restaurant.avg_rating %>/5.0</strong></p>
       </div>
-    <% else %>
-      <div class="d-flex justfy-content-end my-2">
-        <%= simple_form_for [@restaurant, @explore] do |f| %>
-        <%= f.input :explored %>
-        <% f.association :user %>
-        <%= f.submit "Submit", class: "btn btn-info" %>
-        <% end %>
-      </div>
-    <% end  %>
-  <% end  %>
-
+      <!-- End Details -->
     </div>
+    <!-- End Photo-and-Details (Section 1) -->
 
-    <div class="d-flex justify-content-between">
-        <p>Average rating:
-            <%= @restaurant.avg_rating %>/5.0</p>
-    </div>
-    <div class="d-flex">
-      <h4 class="mr-4">Tag: </h4>
-        <ul class="tags">
-          <% tags_array = @restaurant.tags.last(5) %>
-          <% tags_array.each do |tag| %>
-            <li><a href="#" class="tag"><%= tag.name %></a>
-             <a class="delete" href="#"><i class="fa fa-times"></i></a>
-            </li>
-          <% end %>
-        </ul>
-    </div>
-    <div class="d-flex justfy-content-start my-2">
-    <%= simple_form_for [@restaurant, @tag] do |f| %>
-      <%= f.input :name, label: "Name your tag:" %>
-      <% f.association :user %>
-      <%= f.submit "Submit", class: "btn btn-info" %>
-    <% end %>
-    </div>
-
-    <div class="d-flex justify-content-around">
-      <%= cl_image_tag @restaurant.photo.key, height: 400, width: 600, crop: :fill %>
-      <%= render 'shared/restomap', markers: @markers %>
-    </div>
-
-    <div class="d-flex justify-content-between">
-        <p>Address:
-            <strong><%= @restaurant.address %></strong>
-        </p>
-        <p>Postal code:
-            <strong><%= @restaurant.postal_code %></strong>
-        </p>
-        <p>Cuisine type:
-            <strong><%= @restaurant.genre %></strong>
-        </p>
-    </div>
-
-
-    <div class="d-flex justify-content-between">
-        <h3><%= @restaurant.name %></h3>
-        <div class="d-flex justify-content-flex-end">
-            <%# WHY THERE'RE MULTIPLE ELSE HERE? %>
-            <!-- User logged in -->
-            <%- if current_user %>
-             <!-- Start Calendar  -->
-            <%= simple_form_for [@restaurant, @calendar], html: { class: 'form-inline mx-4 my-0'} do |f| %>
-              <input type="hidden" name="restaurant" value="<%= @restaurant %>">
-              <%= f.input :scheduled_date, html5: true, label: false  %>
-              <%= f.button :submit, value: "Schedule your visit", class: 'btn btn-secondary' %>
+    <!--  Start Switchboard (Section 2) -->
+    <div class="col-3 shadow bg-white d-flex justify-content-around resto-section-2 mb-4 mr-2">
+      <!-- User logged in -->
+      <% if current_user %>
+        <!-- Start Mark-as-explored -->
+        <% if current_user.explores.one? { |explored| explored.restaurant == @restaurant } %>
+          <div>
+            <button type="button" class="btn btn-flat-reverse" disabled>Explored!</button>
+          </div>
+        <% else %>
+          <div class="d-flex justfy-content-end my-2">
+            <%= simple_form_for [@restaurant, @explore], html: {class: 'form-inline explore-form'} do |f| %>
+            <%= f.input :explored %>
+            <% f.association :user %>
+            <%= f.submit "Mark it!", class: "btn btn-flat" %>
             <% end %>
+          </div>
+        <% end %>
+        <!-- End Mark-as-explored -->
+        <!-- Start Calendar -->
+        <%= simple_form_for [@restaurant, @calendar], html: {class: 'form-inline schedule-form'} do |f| %>
+          <input type="hidden" name="restaurant" value="<%= @restaurant %>">
+          <%= f.input :scheduled_date, html5: true, label: false %>
+          <%= f.button :submit, value: "Schedule a visit", class: 'btn btn-flat' %>
+        <% end %>
+        <!-- End Calendar -->
+      <% end %>
 
-            <!-- END Calendar -->
-            <button
-                class="btn btn-warning dropdown-toggle"
+      <!-- Start Dropdown-add-to-list -->
+      <!-- User logged in -->
+      <% if current_user %>
+        <button
+                class="btn btn-flat dropdown-toggle"
                 type="button"
                 id="drop-down"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false">
                 Save restaurant to your list
-            </button>
-            <div class="dropdown-menu" aria-labelledby="drop-down">
-                <% user_lists = current_user.lists %>
-                <%- if user_lists.empty? %>
-                <%= link_to "Create new list", new_user_list_path(current_user),
-                class:"dropdown-item" %>
-            <% else %>
-                <% user_lists.each do |list| %>
-                <%- if list.restaurants.include?(@restaurant)%>
-                <%= link_to user_list_path(current_user, list, restaurant: @restaurant, query:
-                @query), method: :patch, class:"dropdown-item" do %>
-                <%= list.name %>
-                <i class="far fa-check-circle"></i>
-                <% end %>
-            <% else %>
-                <%= link_to list.name, user_list_path(current_user, list, restaurant:
-                @restaurant, query: @query), method: :patch, class:"dropdown-item" %>
-                <% end %>
-                <% end %>
-                <% end %>
-            </div>
-            <!-- User not logged in -->
-        <% else %>
-            <button
-                class="btn btn-warning dropdown-toggle mb-3"
-                type="button"
-                id="drop-down"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">
-                Log in / Sign up and get to your list!
-            </button>
-            <div class="dropdown-menu" aria-labelledby="drop-down">
-                <button
-                    type="button"
-                    class="dropdown-item"
-                    data-toggle="modal"
-                    data-target="#exampleModalB">
-                    Log in
-                </button>
-                <button
-                    type="button"
-                    class="dropdown-item"
-                    data-toggle="modal"
-                    data-target="#exampleModalA">
-                    Sign up
-                </button>
-            </div>
-            <% end %>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="drop-down">
+              <% user_lists = current_user.lists %>
+              <%- if user_lists.empty? %>
+                  <%= link_to "Create new list", new_user_list_path(current_user), class:"dropdown-item" %>
+              <% else %>
+                  <% user_lists.each do |list| %>
+                    <%- if list.restaurants.include?(@restaurant)%>
+                      <%= link_to user_list_path(current_user, list, restaurant: @restaurant, query: @query), method: :patch, class:"dropdown-item" do %>
+                        <%= list.name %>  <i class="far fa-check-circle"></i>
+                      <% end %>
+                    <% else %>
+                      <%= link_to list.name, user_list_path(current_user, list, restaurant: @restaurant, query: @query), method: :patch, class:"dropdown-item" %>
+                    <% end %>
+                  <% end %>
+              <% end %>
         </div>
+      <!-- User not logged in -->
+      <% else %>
+        <button
+              class="btn btn-flat dropdown-toggle"
+              type="button"
+              id="drop-down"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
+              Log in / Sign up and get to your list!
+        </button>
+        <div class="dropdown-menu" aria-labelledby="drop-down">
+          <button
+                type="button"
+                class="dropdown-item"
+                data-toggle="modal"
+                data-target="#exampleModalB">
+                Log in
+          </button>
+          <button
+                type="button"
+                class="dropdown-item"
+                data-toggle="modal"
+                data-target="#exampleModalA">
+                Sign up
+          </button>
+        </div>
+      <% end %>
+      <!-- End Dropdown-add-to-list -->
     </div>
+    <!-- End Switchboard (Section 2) -->
+  </div>
+  <!-- End Row 1 -->
 
-    <ul class="list-review">
+  <!-- Start Row 2 -->
+  <div class="row">
+    <!-- Start Tags (Section 3) -->
+    <div class="col-11 shadow bg-white d-flex -center resto-section-3 mb-4 ml-2">
+      <!-- Start Tags-Wrapper -->
+      <div class="resto-tags">
+        <!-- Start Tags-Display -->
+        <div class="d-flex tags-display">
+          <h5 class="mr-4">Tags: </h5>
+          <ul class="tags">
+          <% tags_array = @restaurant.tags.last(5) %>
+          <% tags_array.each do |tag| %>
+            <li class="resto-onetag">
+              <a href="#" class="tag"><%= tag.name %></a>
+              <a class="delete" href="#"><i class="fa fa-times"></i></a>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+        <!-- End Tags-Display -->
+        <!-- Start Tags-Form -->
+        <div class="d-flex">
+          <%= simple_form_for [@restaurant, @tag], html: { class: "form-inline tags-form"} do |f| %>
+            <p>Add a new tag: </p>
+            <%= f.input :name, label: false %>
+            <% f.association :user %>
+            <%= f.submit "Submit", class: "btn btn-flat" %>
+          <% end %>
+        </div>
+        <!-- End Tags-Form -->
+      </div>
+      <!-- End Tags-Wrapper -->
+    </div>
+    <!-- End Tags (Section 3) -->
+  </div>
+  <!-- End Row 2 -->
+
+  <!-- Start Row 3 -->
+  <div class="row">
+
+  </div>
+  <!-- End Row 3 -->
+
+  <!-- Start Row 4 -->
+  <div class="row">
+    <!-- Start Reviews-Cards -->
+    <div>
+      <ul class="list-review">
         <h4> Reviews from other Foodies:</h4>
         <% rest_array = @restaurant.reviews.last(3) %>
         <% rest_array.each do |review| %>
-        <div>
-            <li class="list-review-content"><%= review.content %></li>
-            <div class="d-flex justify-content-end">
-                <p>Written by:
-                    <%= review.user.username %></p>
+            <div>
+              <li class="list-review-content"><%= review.content %></li>
+              <div class="d-flex justify-content-end">
+                <p>Written by:<%= review.user.username %></p>
+              </div>
             </div>
-        </div>
-        <% end  %>
-    </ul>
+        <% end %>
+      </ul>
+    </div>
+    <!-- End Reviews-Cards -->
+  </div>
+  <!-- End Row 4 -->
 
-    <%= simple_form_for [@restaurant, @review] do |f| %>
-      <%= f.input :content, label: "Add your review:" %>
-      <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
-      <% f.association :user %>
-      <%- if current_user %>
+  <!-- Start Row 5 -->
+  <div class="row">
+    <!-- Start Review-Form -->
+    <div>
+      <%= simple_form_for [@restaurant, @review] do |f| %>
+        <%= f.input :content, label: "Add your review:" %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+        <% f.association :user %>
+        <%- if current_user %>
         <%= f.submit "Submit review", class: "btn btn-info" %>
         <%= link_to "My lists", user_lists_path(current_user), class: "btn btn-success"%>
-      <% else %>
+        <% else %>
         <%= link_to "Back to search", results_path(query: params[:query]), class: "btn btn-secondary" %>
         <p class="alert-main">Please log in or sign up to submit a review.</p>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <!-- End Review-Form -->
+  </div>
+  <!-- End Row 5 -->
+
 </div>
+<!-- End Main Body -->

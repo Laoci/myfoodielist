@@ -2,10 +2,10 @@
 
   <%= render 'shared/navsearchbar' %>
   <div class="container-fluid">
-    <% if @query_value == "" %>
-      <h1>Displaying all Restaurants</h1>
+    <% if !@query_value || @query_value == "" %>
+      <h1>Displaying All Restaurants</h1>
     <% else %>
-      <h1>Displaying Results for <%= @query_value %></h1>
+      <h1>Displaying Results for "<%= @query_value %>"</h1>
     <% end %>
 
   <div class="d-flex justify-content-start">
@@ -64,13 +64,13 @@
 
             <!-- begins contains two links -->
               <div class="img-info p-2 rest-info">
-                <div class="btn btn-outline-primary">
+                <div class="btn btn-flat">
                   <div class="fas fa-laptop">
                     <%= link_to "See Details", restaurant_path(restaurant, query: @query_value) %>
                   </div>
                 </div>
               <!-- "Plus Button" -->
-                <div class="btn btn-outline-primary plus-btn">
+                <div class="btn btn-flat plus-btn">
                   <div  class="fas fa-plus add-to-list"
                         data-restaurant-id=<%=restaurant.id%>
                         data-restaurant-name="<%=restaurant.name%>">
