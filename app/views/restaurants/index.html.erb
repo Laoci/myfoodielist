@@ -25,25 +25,6 @@
       <input type="text" name="filter_by" placeholder="<%= params["filter_by"] ? "#{params["filter_by"]}" : "Filter" %>" class="btn-flat my-1">
       <button class="btn btn-flat my-1" type="submit">Reorganize Results</button>
     <% end %>
-  
-    <div class="d-flex justify-content-start">
-        <%= simple_form_for :results, url: results_path, method: :get do |f| %>
-          <input type="hidden" name="query" value="<%= @query_value %>">
-          <select name="sort_by" class="btn-flat my-1">
-            <option value="">Sort by</option>
-            <option <%= params["sort_by"] == "name" ? "selected":"" %> value="name">Restaurant Name</option>
-            <option <%= params["sort_by"] == "genre" ? "selected":"" %> value="genre">Cuisine Type</option>
-            <option <%= params["sort_by"] == "avg_rating" ? "selected":"" %> value="avg_rating">Average Rating</option>
-          </select>
-          <select name="sort_order" class="btn-flat my-1">
-            <option value="">Order</option>
-            <option <%= params["sort_order"] == "asc" ? "selected":"" %> value="asc">Ascending</option>
-            <option <%= params["sort_order"] == "desc" ? "selected":"" %> value="desc">Descending</option>
-          </select>
-          <input type="text" name="filter_by" placeholder="<%= params["filter_by"] ? "#{params["filter_by"]}" : "Filter" %>" class="btn-flat my-1">
-          <button class="btn btn-flat my-1" type="submit">Reorganize Results</button>
-        <% end %>
-    </div>
   </div>
 
   <!-- Restaurants search results -->
