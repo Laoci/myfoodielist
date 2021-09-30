@@ -1,5 +1,5 @@
 <!-- Map wrapper -->
-<div class="listmapcontent d-flex justify-content-start align-items-center">
-  <div id="listmap" style="height: 300px; width: 750px;" data-markers="<%= markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<div  class="listmapcontent d-flex justify-content-start align-items-center ml-1">
+  <div class="shadow bg-white rounded" id="listmap" style="height: 300px; width: 640px;" data-markers="<%= markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   <%= render "shared/copytoclipboard" %>
 </div>
