@@ -18,9 +18,24 @@
   margin: 8px;
 }
 
+.calendar-date h3 {
+  color: white;
+  margin: 4px auto;
+}
+
 .calendar-details {
   width: 50%;
   text-align: center;
+}
+
+.calendar-details h4,
+.calendar-details p {
+  margin: 4px auto;
+}
+
+.calendar-details a:hover {
+  text-decoration: none;
+  color: #0ABAB5;
 }
 
 .cal-container  {

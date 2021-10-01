@@ -134,14 +134,14 @@
         </div>
         <!-- End Tags-Display -->
         <!-- Start Tags-Form -->
-        <div class="d-flex">
-          <%= simple_form_for [@restaurant, @tag], html: { class: "form-inline tags-form"} do |f| %>
-            <p>Add a new tag: </p>
-            <%= f.input :name, label: false %>
-            <% f.association :user %>
-            <%= f.submit "Submit", class: "btn btn-flat" %>
-          <% end %>
-        </div>
+        <!-- div class="d-flex" -->
+          <%#= simple_form_for [@restaurant, @tag], html: { class: "form-inline tags-form"} do |f| %>
+            <!-- Add a new tag: -->
+            <%#= f.input :name, label: false %>
+            <%# f.association :user %>
+            <%#= f.submit "Submit", class: "btn btn-flat" %>
+          <%# end %>
+        <!-- div -->
         <!-- End Tags-Form -->
       </div>
       <!-- End Tags-Wrapper -->
@@ -179,8 +179,7 @@
   <!-- Start Row 5 -->
   <div class="row">
     <!-- Start Review-Form -->
-      <%= simple_form_for [@restaurant, @review], html:{class:"review-form col-11"} do |f| %>
-
+      <%= simple_form_for [@restaurant, @review], html: {class: "review-form col-11"} do |f| %>
           <div class="review-input">
             <%= f.input :content, placeholder: "Add your review:", label: false %>
           </div>
@@ -190,10 +189,10 @@
             <% f.association :user %>
           <div class="d-flex align-self-center">
             <%- if current_user %>
-            <%= f.submit "Submit review", class: "btn btn-info" %>
+            <%= f.submit "Submit review", class: "btn btn-flat ml-2" %>
             <%#= link_to "My lists", user_lists_path(current_user), class: "btn btn-success"%>
             <% else %>
-            <%= link_to "Back to search", results_path(query: params[:query]), class: "btn btn-secondary" %>
+            <%= link_to "Back to search", results_path(query: params[:query]), class: "btn btn-flat-reverse ml-2" %>
             <p class="alert-main">Please log in or sign up to submit a review.</p>
             <% end %>
           </div>

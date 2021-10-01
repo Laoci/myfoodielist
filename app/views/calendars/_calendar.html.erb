@@ -6,7 +6,7 @@
           <h3><strong><%= calendar.scheduled_date.to_formatted_s(:rfc822) %></strong></h3>
         </div>
         <div class="calendar-details">
-          <h4><%= calendar.restaurant.name %></h4>
+          <h4><%= link_to calendar.restaurant.name, restaurant_path(calendar.restaurant) %></h4>
           <p><%= calendar.restaurant.address %></p>
         </div>
       </div>
