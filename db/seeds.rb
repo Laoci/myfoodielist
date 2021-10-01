@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'json'
 require 'faker'
+require 'pry-byebug'
 
 # Clear the database
 puts "Clearing database..."
@@ -14,12 +15,12 @@ puts "Seeding restaurants..."
 
 # Variables for API calls
 tih_search_keyword_baseurl = "https://tih-api.stb.gov.sg/content/v1/food-beverages/search"
-tih_search_image_baseurl = "https://tih-api.stb.gov.sg/media/v1/media/uuid/"
+tih_download_image_baseurl = "https://tih-api.stb.gov.sg/media/v1/download/uuid/"
 tih_api_key = ENV['TIH_API_KEY']
 # pexels_api_key = ENV['PEXELS_API_KEY']
 # client = Pexels::Client.new(pexels_api_key)
-keywords = ["Spanish", "Italian", "Japanese", "Singaporean", "Chinese", "Indian", "Korean", "Thai", "Healthy", "Vegetarian", "Halal", "Cafe", "Pizza", "Sushi", "Burger"]
-
+keywords = ["Spanish", "Italian", "Japanese", "American", "German", "Korean", "Thai", "Vietnamese", "Hokkien", "Teochew", "Cantonese", "Hakka", "Hainanese", "Local", "Hotel", "Healthy", "Seafood", "Pizza", "Steamboat", "Steak"]
+puts "#{keywords.length} keywords for search"
 # def call_pexel(client, genre)
 #   return URI.open(client.photos.search("Food #{genre}", per_page: 1).photos[0].src["tiny"])
 # end
@@ -28,7 +29,10 @@ keywords = ["Spanish", "Italian", "Japanese", "Singaporean", "Chinese", "Indian"
 keywords.each do |keyword|
   # Call TIH searchFoodBeveragesByKeyword API to search the keyword and get restaurants info (15 restos for each keyword)
   res_kw = JSON.parse(URI.open("#{tih_search_keyword_baseurl}?keyword=#{keyword}&apikey=#{tih_api_key}").read)
-  restaurants = res_kw["data"].length > 15 ? res_kw["data"][0...15] : res_kw["data"][0...5]
+  res_list = res_kw["data"]
+  res_list_length = res_list.length
+  restaurants = res_list[0..res_list_length]
+  # Parse each restaurant
   restaurants.each do |resto|
     name = resto["name"]
     address = "#{resto['address']['block']} #{resto['address']['streetName']}"
@@ -40,17 +44,16 @@ keywords.each do |keyword|
     # Call TIH getMediaByUUID API to get a restaurant photo (thumbnail) by its uuid
     # If a photo (thumbnail) uuid exists, get the photo url
     begin
-      thumb_uuid = resto["thumbnails"][0]["uuid"]
-      res_thumb = JSON.parse(URI.open("#{tih_search_image_baseurl}#{thumb_uuid}?apikey=#{tih_api_key}").read)
-      thumb_file = URI.open("#{res_thumb['data']['url']}?apikey=#{tih_api_key}")
+      image_uuid = resto["images"][0]["uuid"]
+      image_file = URI.open("#{tih_download_image_baseurl}#{image_uuid}?fileType=Thumbnail%201080h&apikey=#{tih_api_key}")
     rescue
-      thumb_file = nil
+      image_file = nil
     end
-
-    if thumb_file && coordinates
+    # binding.pry
+    if !image_file.nil? && (image_file.instance_of?(Tempfile)) && coordinates
       # Create a new restaurant instance, attach the photo and save
       new_restaurant = Restaurant.new(name: name, address: address, genre: genre, postal_code: postal_code, coordinates: coordinates)
-      new_restaurant.photo.attach(io: thumb_file, filename: "#{name}.jpg", content_type: 'image/jpg')
+      new_restaurant.photo.attach(io: image_file, filename: "#{name}.jpg", content_type: 'image/jpg')
       puts "#{name} photo attached" if new_restaurant.photo.attached?
       puts "#{name} saved" if new_restaurant.save
     end
@@ -69,7 +72,7 @@ puts "Seeding users..."
   puts "#{username} saved, Email: #{email}, PW: #{password}" if new_user.save
 end
 test_user = User.new(username: "John Smith", email: "johnsmith@gmail.com", password: 123456)
-test_user.save!
+puts "John Smith saved, Email: johnsmith@gmail.com, PW: 123456" if test_user.save
 puts "Users created"
 
 # Generate reviews and assign them under different users and restaurants randomly
@@ -101,7 +104,7 @@ puts "Seeding tags..."
 Restaurant.all.each do |restaurant|
   User.all.each do |user|
     2.times do
-      tag_name = Faker::Restaurant.type
+      tag_name = "#{restaurant.genre} #{Faker::Dessert.flavor}"
       tag = Tag.new(name: tag_name, user: user, restaurant: restaurant)
       tag.save!
     end
