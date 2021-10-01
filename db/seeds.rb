@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'json'
 require 'faker'
-require 'pry-byebug'
 
 # Clear the database
 puts "Clearing database..."
@@ -47,7 +46,6 @@ keywords.each do |keyword|
     rescue
       image_file = nil
     end
-    # binding.pry
     if !image_file.nil? && (image_file.instance_of?(Tempfile)) && coordinates
       # Create a new restaurant instance, attach the photo and save
       new_restaurant = Restaurant.new(name: name, address: address, genre: genre, postal_code: postal_code, coordinates: coordinates)
