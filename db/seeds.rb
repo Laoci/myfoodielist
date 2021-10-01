@@ -19,7 +19,7 @@ tih_download_image_baseurl = "https://tih-api.stb.gov.sg/media/v1/download/uuid/
 tih_api_key = ENV['TIH_API_KEY']
 # pexels_api_key = ENV['PEXELS_API_KEY']
 # client = Pexels::Client.new(pexels_api_key)
-keywords = ["Spanish", "Italian", "French", "Japanese", "Singaporean", "American", "British", "German", "Korean", "Thai", "Vietnamese", "Hokkien", "Teochew", "Cantonese", "Hakka", "Hainanese", "Local", "Hotel", "Healthy", "Vegetarian", "Seafood", "Cafe", "Pizza", "Sushi", "Hot Pot"]
+keywords = ["Spanish", "Italian", "Japanese", "American", "German", "Korean", "Thai", "Vietnamese", "Hokkien", "Teochew", "Cantonese", "Hakka", "Hainanese", "Local", "Hotel", "Healthy", "Seafood", "Pizza", "Steamboat", "Steak"]
 puts "#{keywords.length} keywords for search"
 # def call_pexel(client, genre)
 #   return URI.open(client.photos.search("Food #{genre}", per_page: 1).photos[0].src["tiny"])
@@ -104,7 +104,7 @@ puts "Seeding tags..."
 Restaurant.all.each do |restaurant|
   User.all.each do |user|
     2.times do
-      tag_name = Faker::Restaurant.type
+      tag_name = "#{restaurant.genre} #{Faker::Dessert.flavor}"
       tag = Tag.new(name: tag_name, user: user, restaurant: restaurant)
       tag.save!
     end
