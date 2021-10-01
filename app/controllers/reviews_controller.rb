@@ -16,11 +16,12 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to restaurant_path(@restaurant)
     else
-      flash[:alert] = "Error"
+      flash[:alert] = "Error! Please give a review and rating"
+      redirect_to restaurant_path(@restaurant)
     end
   end
 
-  private     
+  private
 
   def review_params
     params.require(:review).permit(:content, :rating)

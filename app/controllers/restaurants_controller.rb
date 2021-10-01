@@ -34,6 +34,8 @@ class RestaurantsController < ApplicationController
     @tag = Tag.new
     @explore = Explore.new
     @markers = [JSON.parse(@restaurant.coordinates)]
+    @drop_down = ["Rate your experience", 1, 2, 3, 4, 5 ]
+
   end
 
   def new
