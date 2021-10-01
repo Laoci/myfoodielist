@@ -13,9 +13,9 @@ const showList = () => {
   }
 }
 
-export const getList = () => {
-  return window.localStorage.list
-}
+// export const getList = () => {
+//   return window.localStorage.list
+// }
 
 
 export { showList }

@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Myfoodielist</title>
+        <title>Myfoodielist: Restaurant-Oriented Foodie List (ROFL) 🍜😆</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
-
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':
         'reload' %>
-
-        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer:
-        true %>
-
+        <meta name="description" content="My Foodie List provides a quick and easy way to search STB's recommended restaurants in Singapore, create list, save it and share list via a link.">
+        <%= favicon_link_tag asset_path('mfl_favicon.ico') %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     </head>
     <body>
       <%= yield %>
