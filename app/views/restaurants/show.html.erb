@@ -24,7 +24,7 @@
     <!-- End Photo-and-Details (Section 1) -->
 
     <!--  Start Switchboard (Section 2) -->
-    <div class="col-3 shadow bg-white d-flex justify-content-around resto-section-2 mb-4 mr-2">
+    <div id="card-bg" class="col-3 shadow bg-white d-flex justify-content-around resto-section-2 mb-4 mr-2">
       <!-- User logged in -->
       <% if current_user %>
         <!-- Start Mark-as-explored -->
@@ -116,7 +116,7 @@
   <!-- Start Row 2 -->
   <div class="row">
     <!-- Start Tags (Section 3) -->
-    <div class="col-11 shadow bg-white d-flex -center resto-section-3 mb-4 ml-2">
+    <div id="card-bg-long" class="col-11 shadow bg-white d-flex -center resto-section-3 mb-4 ml-2">
       <!-- Start Tags-Wrapper -->
       <div class="resto-tags">
         <!-- Start Tags-Display -->
@@ -157,22 +157,21 @@
   <!-- End Row 3 -->
 
   <!-- Start Row 4 -->
-  <div class="row">
+  <h4> Reviews from other Foodies:</h4>
+  <div class="row review-list">
     <!-- Start Reviews-Cards -->
-    <div>
-      <ul class="list-review">
-        <h4> Reviews from other Foodies:</h4>
-        <% rest_array = @restaurant.reviews.last(3) %>
-        <% rest_array.each do |review| %>
-            <div>
-              <li class="list-review-content"><%= review.content %></li>
-              <div class="d-flex justify-content-end">
-                <p>Written by:<%= review.user.username %></p>
-              </div>
-            </div>
-        <% end %>
-      </ul>
-    </div>
+    <% rest_array = @restaurant.reviews.last(3) %>
+    <% rest_array.each do |review| %>
+        <div class="review">
+          <div class="d-flex justify-content-start">
+            <p>Written by:<%= review.user.username %></p>
+          </div>
+          <div class="d-flex justify-content-start">
+            <p>Rating given: <%= review.rating %></p>
+          </div>
+          <div class="list-review-content"><%= review.content %></div>
+        </div>
+    <% end %>
     <!-- End Reviews-Cards -->
   </div>
   <!-- End Row 4 -->
@@ -180,18 +179,25 @@
   <!-- Start Row 5 -->
   <div class="row">
     <!-- Start Review-Form -->
-    <div>
-      <%= simple_form_for [@restaurant, @review] do |f| %>
-        <%= f.input :content, label: "Add your review:" %>
-        <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
-        <% f.association :user %>
-        <%- if current_user %>
-        <%= f.submit "Submit review", class: "btn btn-info" %>
-        <%= link_to "My lists", user_lists_path(current_user), class: "btn btn-success"%>
-        <% else %>
-        <%= link_to "Back to search", results_path(query: params[:query]), class: "btn btn-secondary" %>
-        <p class="alert-main">Please log in or sign up to submit a review.</p>
-        <% end %>
+      <%= simple_form_for [@restaurant, @review], html:{class:"review-form col-11"} do |f| %>
+
+          <div class="review-input">
+            <%= f.input :content, placeholder: "Add your review:", label: false %>
+          </div>
+          <div class="review-input">
+            <%= f.input :rating, collection: @drop_down, selected: "Rate your experience", label: false, input_html: {placeholder: "Rate your experience"} %>
+          </div>
+            <% f.association :user %>
+          <div class="d-flex align-self-center">
+            <%- if current_user %>
+            <%= f.submit "Submit review", class: "btn btn-info" %>
+            <%#= link_to "My lists", user_lists_path(current_user), class: "btn btn-success"%>
+            <% else %>
+            <%= link_to "Back to search", results_path(query: params[:query]), class: "btn btn-secondary" %>
+            <p class="alert-main">Please log in or sign up to submit a review.</p>
+            <% end %>
+          </div>
+
       <% end %>
     </div>
     <!-- End Review-Form -->
