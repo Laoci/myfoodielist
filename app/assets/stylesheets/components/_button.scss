@@ -13,6 +13,8 @@ button.nav-link {
 }
 
 .btn-flat {
+  border: 1px solid #0ABAB5;
+  font-family: Arial, Helvetica, sans-serif;
   color: #0ABAB5;
   padding: 8px 24px;
   border-radius: 4px;
@@ -24,6 +26,31 @@ button.nav-link {
 
 .btn-flat:hover {
   background: #0ABAB5;
+  color: white;
+}
+
+.btn-flat a {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-flat a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.btn-flat-reverse {
+  border: 1px solid white;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #0ABAB5;
+  transition: background 0.3s ease;
+}
+
+.btn-flat-reverse a {
+  font-family: Arial, Helvetica, sans-serif;
   color: white;
 }
 

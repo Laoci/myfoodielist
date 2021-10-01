@@ -9,7 +9,42 @@
   background: rgb(248, 246, 246);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin: 8px;
-  border: 2px solid rgb(122, 121, 121);
+  border: 1px solid rgb(122, 121, 121);
+}
+
+.card-resto h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  // cursor:pointer;
+}
+
+.card-resto p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 8px;
+  // cursor:pointer;
+}
+
+.card-resto .card-resto-infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  // cursor:pointer;
+}
+
+.card-resto-infos .card-resto-user {
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.card-resto>img {
+  height: 200px;
+  width: 160px;
+  object-fit: cover;
+  // cursor:pointer;
 }
 
 
@@ -42,12 +77,6 @@ p.pl-2 {
   border-top: 1px solid grey;
 }
 
-.card-resto>img {
-  height: 200px;
-  width: 160px;
-  object-fit: cover;
-}
-
 .resto-grid {
   width: 80%;
   display: flex;
@@ -58,30 +87,6 @@ p.pl-2 {
   justify-content: flex-start;
 }
 
-.card-resto h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-resto p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 8px;
-}
-
-.card-resto .card-resto-infos {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
-}
-
-.card-resto-infos .card-resto-user {
-  right: 16px;
-  top: -20px;
-  width: 40px;
-}
 // Results content
 .resultcontent {
   left: 10px;
@@ -110,12 +115,12 @@ p.pl-2 {
 }
 
 .resultsidebar {
-  padding: 4px;
+  padding: 8px;
   margin: 12px;
   z-index: 20;
   top: 128px;
   right: 20px;
-  width: 280px;
+  width: 300px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin-left: auto;
   border-radius: 8px;
@@ -146,4 +151,69 @@ p.pl-2 {
 .copy-to-clipboard .btn-flat {
   height: 42px;
   width: 50%;
+}
+
+.dashboard-card {
+  margin-top:20px;
+  padding-right:10px;
+  text-shadow: 1px 1px #000;
+}
+
+.dashboard-card h2 {
+  color: white;
+}
+
+.resto-section-1, .resto-section-2, .resto-section-3 {
+  border-radius: 12px;
+}
+
+.resto-section-1 {
+  padding-left: 0;
+}
+
+.resto-section-1 img {
+  border-radius: 12px 0 0 12px;
+}
+
+.resto-details {
+  flex-direction: column;
+  align-items: start;
+  padding-left: 32px;
+}
+
+.resto-section-2 {
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.resto-section-3 {
+  justify-content: center;
+}
+
+.schedule-form input {
+  margin: 0px !important;
+}
+
+.explore-form div {
+  margin-right: 8px;
+}
+
+.resto-tags {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.resto-onetag {
+  height: 32px;
+}
+
+.tags-display {
+  align-items: center;
+}
+
+.tags-form input,
+.tags-form p {
+  margin-right: 8px;
 }
