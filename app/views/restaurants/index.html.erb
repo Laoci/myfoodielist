@@ -67,18 +67,16 @@
 
             <!-- begins contains two links -->
               <div class="img-info p-2 rest-info">
-                <div class="btn btn-flat">
-                  <div class="fas fa-laptop">
-                    <%= link_to "See Details", restaurant_path(restaurant, query: @query_value) %>
-                  </div>
+                <div id="copy-button" class="btn border btn-flat">
+                  <%= link_to restaurant_path(restaurant, query: @query_value) do %>
+                    <i class="fas fa-info-circle"></i> See Details
+                  <% end %>
                 </div>
               <!-- "Plus Button" -->
-                <div class="btn btn-flat plus-btn">
-                  <div  class="fas fa-plus add-to-list"
+                <div id="copy-button" class="btn border btn-flat">
+                    <a href="" class="add-to-list"
                         data-restaurant-id=<%=restaurant.id%>
-                        data-restaurant-name="<%=restaurant.name%>">
-                    <%= link_to "Add to List" %>
-                  </div>
+                        data-restaurant-name="<%=restaurant.name%>"><i class="fas fa-plus"></i> Add to List</a>
                 </div>
               <!-- end of plus button -->
               </div>

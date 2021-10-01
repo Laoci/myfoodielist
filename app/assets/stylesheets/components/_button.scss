@@ -29,9 +29,14 @@ button.nav-link {
   color: white;
 }
 
-.btn-flat a{
+.btn-flat a {
+  text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
-  color: #0ABAB5;
+}
+
+.btn-flat a:hover {
+  text-decoration: none;
+  color: white;
 }
 
 .btn-flat-reverse {
