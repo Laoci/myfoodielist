@@ -40,13 +40,25 @@ button.nav-link {
 }
 
 .btn-flat-reverse {
-  border: 1px solid white;
+  border: 1px solid #0abab5;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
   background: #0ABAB5;
+  box-shadow: 0px 9px #58F6F2;
+}
+
+.btn-flat-reverse:hover {
+  background: white;
+  color: #0ABAB5;
   transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-flat-reverse a:hover {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #0ABAB5;
 }
 
 .btn-flat-reverse a {
@@ -54,6 +66,11 @@ button.nav-link {
   color: white;
 }
 
+.btn-flat-reverse:active {
+  background-color: #0ABAB5;
+  box-shadow: 0 5px #056360;
+  transform: translateY(4px);
+}
 // .searchButton {
 //   background: #0abab5 !important;
 // }

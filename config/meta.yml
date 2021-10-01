@@ -1,0 +1,7 @@
+# config/meta.yml
+
+meta_product_name: "My Foodie List"
+meta_title: "My Foodie List - Restaurant Orientated Food List Maker"
+meta_description: "My Foodie List provides a quick and easy way to search STB's recommended restaurants in Singapore, create list, save it and share list via a link."
+meta_image: "myfoodielist.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
