@@ -326,3 +326,7 @@ p.pl-2 {
   align-items: flex-end;
   position: relative;
 }
+
+img.card-img-top {
+  object-fit: cover;
+}
