@@ -19,7 +19,7 @@ tih_download_image_baseurl = "https://tih-api.stb.gov.sg/media/v1/download/uuid/
 tih_api_key = ENV['TIH_API_KEY']
 # pexels_api_key = ENV['PEXELS_API_KEY']
 # client = Pexels::Client.new(pexels_api_key)
-keywords = ["Spanish", "Italian", "Japanese", "American", "German", "Korean", "Thai", "Vietnamese", "Hokkien", "Teochew", "Cantonese", "Hakka", "Hainanese", "Local", "Hotel", "Healthy", "Seafood", "Pizza", "Steamboat", "Steak"]
+keywords = ["Spanish", "Italian", "Japanese", "American", "German", "French", "British", "Korean", "Thai", "Vietnamese", "Hokkien", "Teochew", "Cantonese", "Hakka", "Hainanese", "Mala", "Healthy", "Vegetarian", "Seafood", "Pizza", "Steak", "Hot Pot", "Coffee", "Ramen", "Taco"]
 puts "#{keywords.length} keywords for search"
 # def call_pexel(client, genre)
 #   return URI.open(client.photos.search("Food #{genre}", per_page: 1).photos[0].src["tiny"])
@@ -29,9 +29,7 @@ puts "#{keywords.length} keywords for search"
 keywords.each do |keyword|
   # Call TIH searchFoodBeveragesByKeyword API to search the keyword and get restaurants info (15 restos for each keyword)
   res_kw = JSON.parse(URI.open("#{tih_search_keyword_baseurl}?keyword=#{keyword}&apikey=#{tih_api_key}").read)
-  res_list = res_kw["data"]
-  res_list_length = res_list.length
-  restaurants = res_list[0..res_list_length]
+  restaurants = res_kw["data"]
   # Parse each restaurant
   restaurants.each do |resto|
     name = resto["name"]
@@ -104,7 +102,7 @@ puts "Seeding tags..."
 Restaurant.all.each do |restaurant|
   User.all.each do |user|
     2.times do
-      tag_name = "#{restaurant.genre} #{Faker::Dessert.flavor}"
+      tag_name = Faker::Coffee.variety
       tag = Tag.new(name: tag_name, user: user, restaurant: restaurant)
       tag.save!
     end
