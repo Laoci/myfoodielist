@@ -1,6 +1,10 @@
 <!-- Banner & Search Bar -->
 <div class="container search-bar-container">
   <div class="wrap">
+    <div id="blur-bg">
+        <h2 id="white-text">Creating A Foodie List Is Simple!</h1>
+        <h3 id="white-text">Search - Name - Add - Schedule</h2>
+    </div>
     <%= simple_form_for :search, url: '/results', method: :get do |f| %>
       <div class="d-flex search-form-control form-group">
         <input class="form-control input-lg" type="text" name="query" id="query" placeholder="Start your food search here" />
