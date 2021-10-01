@@ -46,7 +46,6 @@ button.nav-link {
   padding: 8px 24px;
   border-radius: 4px;
   background: #0ABAB5;
-  box-shadow: 0px 9px #58F6F2;
 }
 
 .btn-flat-reverse:hover {
@@ -65,12 +64,3 @@ button.nav-link {
   font-family: Arial, Helvetica, sans-serif;
   color: white;
 }
-
-.btn-flat-reverse:active {
-  background-color: #0ABAB5;
-  box-shadow: 0 5px #056360;
-  transform: translateY(4px);
-}
-// .searchButton {
-//   background: #0abab5 !important;
-// }
