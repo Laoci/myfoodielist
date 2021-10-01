@@ -1,4 +1,2 @@
 <!-- Map wrapper -->
-<div class="restomapcontent d-flex justify-content-start">
-  <div id="restomap" style="height: 400px; width: 400px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-</div>
+<div class="col-6 d-flex justify-content-center restomapcontent" id="restomap" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>

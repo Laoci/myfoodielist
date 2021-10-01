@@ -5,24 +5,22 @@
   padding: 150px 0;
   height: 30%;
   border-radius: 0 0 85% 85% / 30%;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 body h2 {
-
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
-
   cursor: default;
 }
 
-.teal
-{
-    color: #0abab5;
-    text-shadow: 1px 1px #008985;
+.teal  {
+  color: #0abab5;
+  text-shadow: 1px 1px #008985;
 }
 
-body p {
+p.p-home{
   color: #008985;
   padding-left: 16px;
   cursor: default;
@@ -78,8 +76,43 @@ body p {
   font-size: 0.75em;
 }
 
+// Carousel assets
 #carouselExampleIndicators  {
-  height: 250px;
-  width: 400px;
-  border-radius: 8px;
+  height: 200px;
+  width: 300px;
+}
+
+.carousel-slide {
+  position: absolute;
+  right: 0px;
+}
+
+.carousel-inner  {
+  height: 200px;
+  width: 300px;
+  object-fit: fill;
+}
+
+// Fancy button for list
+.fancybullet {
+	ol {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		counter-reset: fancy;
+	}
+	li {
+		margin-bottom: 1rem;
+		counter-increment: fancy;
+		&:before {
+			content: counter(fancy);
+			margin-right: 0.8rem;
+			background: #0abab5;
+			border-radius: 50%;
+			color: #fff;
+			display: inline-block;
+			text-align: center;
+			padding: 0.8rem 1.1rem;
+		}
+	}
 }

@@ -1,30 +1,64 @@
 <%= stylesheet_pack_tag 'application' %>
 <%= render 'shared/navsearchbar' %>
 
-
-<div class="d-flex justify-content-start">
-  <h1>My list: <%= @list.name %></h1>
-  <%= link_to "Back to Dashboard", user_lists_path(current_user), class:"btn btn-flat my-1 mx-3" %>
-</div>
-<!-- Map wrapper -->
-<%= render 'shared/listmap', markers: @markers %>
-<!-- Restaurants search results -->
-<div class="resultcontent">
-  <div class="container">
-    <div class="resto-grid">
-        <% @list.restaurants.each do |restaurant| %>
-          <%= link_to restaurant_path(restaurant, query: @query_value) do %>
-          <div class="card-resto">
-          <%= cl_image_tag restaurant.photo.key, height: 200, width: 300, crop: :fill %>
-            <div>
-              <h2 class="ml-2"><%= restaurant.name %></h2>
-              <p>Restaurant address: <strong><%= restaurant.address %></strong></p>
-              <p>Postal code: <strong><%= restaurant.postal_code %></strong></p>
-              <p>Cuisine type: <strong><%= restaurant.genre %></strong></p>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
+<div class="container mt-4">
+  <div class="d-flex justify-content-start">
+    <div>
+      <h1 class="pl-2 teal">My list: <%= @list.name %></h1>
+      <p class="pl-3">Showing <%= @list.restaurants.length %> results</p>
+    </div>
+    <div class="mt-1 ml-2">
+      <%= link_to "Back to Dashboard", user_lists_path(current_user), class:"btn border btn-flat ml-3" %>
     </div>
   </div>
+  <!-- Map wrapper -->
+  <%= render 'shared/listmap', markers: @markers %>
 </div>
+
+<!-- Restaurants search results -->
+  <div class="resto-grid container mx-auto mt-3">
+    <% @list.restaurants.each do |restaurant| %>
+        <div class="card-resto">
+        <!-- begin inner container -->
+          <div class="p-3">
+            <h2 class="text-left rest-name"><u><%= restaurant.name.first(60) %></u></h2>
+          <!-- begins contains image and desc -->
+            <div class="d-flex">
+              <!-- Image -->
+              <%= cl_image_tag(restaurant.photo.key, :transformation=>[
+                {height: 160, width: 240, crop: :fill},
+                {:radius=>12}]) %>
+
+              <!-- Restaurant Info -->
+              <div class="ml-4">
+                <div>
+                  <p>Address: <strong><%= restaurant.address %></strong></p>
+                  <p>Postal code: <strong><%= restaurant.postal_code %></strong></p>
+                  <p>Cuisine type: <strong><%= restaurant.genre %></strong></p>
+                  <p>Average rating: <strong><%= restaurant.avg_rating %>/5.0</strong></p>
+                  <p>Tags:
+                    <% if restaurant.tag_names.empty? %>
+                      <strong><%= "None" %></strong>
+                    <% else %>
+                      <strong><%= restaurant.tag_names.sample(2).join(', ') %> ...</strong>
+                    <% end %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <!-- end of image and desc div -->
+
+          <!-- begins contains two links -->
+            <div class="img-info p-2 rest-info">
+              <div id="copy-button" class="btn border btn-flat">
+                <div class="fas fa-info-circle">
+                  <%= link_to "See Details", restaurant_path(restaurant, query: @query_value) %>
+                </div>
+              </div>
+            </div>
+          <!-- end of two links -->
+          </div>
+        </div>
+      <% end %>
+  </div>
+<!-- End of cards grid -->
