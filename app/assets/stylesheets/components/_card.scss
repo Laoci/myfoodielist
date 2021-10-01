@@ -217,3 +217,61 @@ p.pl-2 {
 .tags-form p {
   margin-right: 8px;
 }
+
+#card-bg {
+  background-image: url('https://images.unsplash.com/photo-1501959915551-4e8d30928317?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80') !important;
+  background-size: cover;
+  background-position: center;
+}
+
+#card-bg-long {
+    background-image: url('https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80') !important;
+    background-size: cover;
+    background-position: center;
+}
+
+// #rev-header {
+//   width: 1038px;
+//   height: 500px;
+//   border-radius: 12px;
+//   padding: 0;
+//   margin: 0;
+//   background-color: #d6d6d6;
+//   text-align: center;
+//   text-decoration: none;
+// }
+
+.review-list {
+  display: grid;
+  width:fit-content;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.review{
+  background-color: #fff;
+  margin: 16px;
+  padding: 8px;
+  border-radius: 12px;
+  height: 300px;
+  width: 324px;
+  overflow: auto;
+}
+
+.review-form {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.review-input {
+  margin: 16px;
+  padding: 8px;
+  border-radius: 12px;
+  min-width: 25%;
+
+  .form-group {
+    margin-bottom: 0;
+  }
+}
