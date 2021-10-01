@@ -1,6 +1,8 @@
 // Restaurants cards
 .card-resto {
   width: 520px;
+  border: 1px solid !important;
+  border-color: #0ABAB5 !important;
   border-radius: 12px;
   height: 280px;
   overflow: hidden;
@@ -45,35 +47,34 @@
   // cursor:pointer;
 }
 
+
+h1 {
+  margin-left: 6px;
+}
+
 a {
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
 
 a:hover {
-  color: white;
+  text-decoration: none;
 }
 
 .rest-name {
   padding-left: 0 !important;
 }
 
-p {
-  padding-left: 0 !important;
+p.pl-2 {
+  padding-left: 0;
 }
 
 .img-info {
   display: flex;
-  // flex-wrap:nowrap;
   justify-content: space-around;
   align-self: flex-end;
   margin-top: 8px;
   border-top: 1px solid grey;
-  // align-content: flex-end;
-  // position: relative;
-  // bottom: 0;
-  // flex-grow: 1;
-  // border-collapse: collapse;
 }
 
 .resto-grid {
@@ -81,17 +82,13 @@ p {
   display: flex;
   flex-wrap: wrap;
   left: 10px;
-  position: absolute;
   margin: 4px;
   align-items: center;
   justify-content: flex-start;
 }
 
-
 // Results content
 .resultcontent {
-  // position: absolute;
-  // top: 540px;
   left: 10px;
   width: 100%;
 }
@@ -114,7 +111,6 @@ p {
   background-color: lightgreen;
   border-radius: 40px;
   padding: 5px 5px 5px 5px;
-  // cursor: pointer  ;
   top: 8px;
 }
 
@@ -126,90 +122,20 @@ p {
   right: 20px;
   width: 300px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  // position:relative;
   margin-left: auto;
   border-radius: 8px;
   background-color: rgba(255,255,255,0.9);
 }
-// Cards for dashboard
-.card-list {
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.card-list .list-square {
-  height: 200px;
-  width: 100%;
-  background-color: #00AF91;
-  color: white;
-  text-align: center;
-}
-
-.card-list .list-square-new {
-  height: 200px;
-  width: 100%;
-  background-color: #ED8A99;
-  color: white;
-  text-align: center;
-}
-
-.card-list h2 {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 40px;
-  font-weight: bold;
-}
-
-.card-list h3 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-list p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
-
-.card-list .card-list-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
-}
-
-.list-grid {
-  // background-size: cover;
-  // background-position: center;
-  // height: 150px;
-  // border-radius: 1px;
-  // width: 80%;
-  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 4px;
-  align-items: center;
-  justify-content: flex-start;
-  // width: 1600px;
-  // font-size: 22px;
-  // color: white;
-  // font-weight: bolder;
-  // text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-}
-
-a:hover {
-  text-decoration: none;
-}
 
 /* Copy URL to clipboard feature */
 .copy-to-clipboard {
+  background-image: url('https://images.unsplash.com/photo-1501959915551-4e8d30928317?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80') !important;
+  background-size: cover;
+  background-position: center;
   border: 1px solid;
   border-color: #0ABAB5;
-  border-radius: 4px;
-  width: 450px;
+  border-radius: 12px !important;
+  width: 396px;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -226,7 +152,6 @@ a:hover {
   height: 42px;
   width: 50%;
 }
-
 
 .dashboard-card {
   margin-top:20px;

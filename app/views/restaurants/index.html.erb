@@ -1,14 +1,28 @@
 <div data-controller="list">
 
   <%= render 'shared/navsearchbar' %>
+<<<<<<< HEAD
   <div class="container-fluid">
     <% if !@query_value || @query_value == "" %>
       <h1>Displaying All Restaurants</h1>
     <% else %>
       <h1>Displaying Results for "<%= @query_value %>"</h1>
+=======
+  <div class="container-fluid mt-4">
+    <% if @query_value == "" %>
+      <div>
+        <h1 class="teal">Displaying all Restaurants</h1>
+        <p class="pl-2">Showing <%= @restaurants.count %> results</p>
+      </div>
+    <% else %>
+      <div>
+        <h1 class="teal">Displaying Results for <%= @query_value %></h1>
+        <p class="pl-2">Showing <%= @restaurants.count %> results</p>
+      </div>
+>>>>>>> 9f2ef91300732b6adcf38d4f2a6f8ca66d24778e
     <% end %>
 
-  <div class="d-flex justify-content-start">
+  <div class="d-flex justify-content-start ml-2">
     <%= simple_form_for :results, url: results_path, method: :get do |f| %>
       <input type="hidden" name="query" value="<%= @query_value %>">
       <select name="sort_by" class="btn-flat my-1">
@@ -23,14 +37,14 @@
         <option <%= params["sort_order"] == "desc" ? "selected":"" %> value="desc">Descending</option>
       </select>
       <input type="text" name="filter_by" placeholder="<%= params["filter_by"] ? "#{params["filter_by"]}" : "Filter" %>" class="btn-flat my-1">
-      <button class="btn btn-flat my-1" type="submit">Reorganize Results</button>
+      <button class="btn btn-flat ml-2" type="submit">Reorganize Results</button>
     <% end %>
   </div>
 
   <!-- Restaurants search results -->
   <div class="container">
 
-    <div class="resto-grid">
+    <div class="resto-grid position-absolute">
       <% @restaurants.each do |restaurant| %>
           <div class="card-resto">
           <!-- begin inner container -->
@@ -46,11 +60,11 @@
                 <!-- Restaurant Info -->
                 <div class="ml-4">
                   <div>
-                    <p>Address: <strong><%= restaurant.address %></strong></p>
-                    <p>Postal code: <strong><%= restaurant.postal_code %></strong></p>
-                    <p>Cuisine type: <strong><%= restaurant.genre %></strong></p>
-                    <p>Average rating: <strong><%= restaurant.avg_rating %>/5.0</strong></p>
-                    <p>Tags:
+                    <p class="pl-2">Address: <strong><%= restaurant.address %></strong></p>
+                    <p class="pl-2">Postal code: <strong><%= restaurant.postal_code %></strong></p>
+                    <p class="pl-2">Cuisine type: <strong><%= restaurant.genre %></strong></p>
+                    <p class="pl-2">Average rating: <strong><%= restaurant.avg_rating %>/5.0</strong></p>
+                    <p class="pl-2">Tags:
                       <% if restaurant.tag_names.empty? %>
                         <strong><%= "None" %></strong>
                       <% else %>
@@ -84,9 +98,9 @@
           </div>
         <% end %>
     </div>
+    <!-- End of cards grid -->
   </div>
+  <!-- End of card container -->
   <!-- Side bar to add to list -->
-  <div class="d-flex">
     <%= render 'shared/sidebar', restaurants: @restaurants %>
-  </div>
 </div>

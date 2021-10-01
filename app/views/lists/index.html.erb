@@ -1,10 +1,9 @@
 <%= render "shared/navsearchbar" %>
-<h1 style="color:#0abab5;text-align:center;margin-top:8px;">Your List Dashboard</h1>
+<h1 style="color:#0abab5;text-align:center;margin-top:8px;">My Foodie List Dashboard</h1>
     <div class="container">
       <div class="row card-list">
-
       <% @lists.each do |list| %>
-        <div class="card col-lg-4">
+        <div class="card col-12 col-sm-4 col-lg-3 mx-2">
           <%= link_to user_list_path(@user, list) do %>
           <div class="list-square dashboard-card">
             <h2><%= list.name %></h2>
@@ -18,19 +17,25 @@
           </div>
         </div>
       <% end %>
-      <div class="card col-lg-4">
+      <div class="card col-12 col-sm-4 col-lg-3 mx-2">
         <%= link_to results_path do %>
         <div class="list-square-new" style='margin-top:20px; padding-right:10px'>
-          <h2>Add new</h2>
-          <h2><i class="fas fa-plus"></i></h2>
+          <h2>Add List</h2>
+          <h2 class="add-icon"><i class="fas fa-plus"></i></h2>
         </div>
         <% end %>
         <div class="card-list-infos">
           <div>
-            <h3>Go search for more restaurants!</h3>
+            <h3>Start Your Customised Foodie List!</h3>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+<hr>
+<h2 class='teal'>How To Use My Foodie List?</h2>
+<p>Some simple steps to start your food trail</p>
+<div class="container">
+  <%= render 'shared/quickpicks' %>
 </div>
