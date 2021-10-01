@@ -1,5 +1,5 @@
 <%= render "shared/navsearchbar" %>
-<h1 style="color:#0abab5;text-align:center;margin-top:8px;">My Foodie List Dashboard</h1>
+<h1 style="color:#0abab5; text-align:center;margin-top:8px;">My Foodie List Dashboard</h1>
     <div class="container">
       <div class="row card-list">
       <% @lists.each do |list| %>
@@ -11,7 +11,6 @@
           <% end %>
           <div class="card-list-infos">
             <div>
-              <h3>Tags:</h3>
               <p><strong><%= list.restaurants.length %></strong> Restaurants</p>
             </div>
           </div>
@@ -35,7 +34,7 @@
 </div>
 <hr>
 <h2 class='teal'>How To Use My Foodie List?</h2>
-<p>Some simple steps to start your food trail</p>
+<p class="p-home">Some simple steps to start your food trail</p>
 <div class="container">
   <%= render 'shared/quickpicks' %>
 </div>
