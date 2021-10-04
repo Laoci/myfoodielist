@@ -5,17 +5,25 @@ const showList = () => {
     const restsArr = JSON.parse(window.localStorage.list)
     // restList.innerHTML = localStorage.getItem("list")
     restsArr.forEach((obj) => {
-      // console.log(obj.restName);
       restList.insertAdjacentHTML("beforeend", `<li>${obj.restName}</li>`)
-      // restList.innerHTML = obj.restName;
     })
-    // console.log(restsArr);
+    deleteList();
   }
 }
 
 // export const getList = () => {
 //   return window.localStorage.list
 // }
+
+const deleteList = () => {
+  // when click on clear link
+  const deleteL = document.querySelector('.deleteL')
+  deleteL.addEventListener('click', (e) => {
+    window.localStorage.clear();
+  })
+}
+
+
 
 
 export { showList }

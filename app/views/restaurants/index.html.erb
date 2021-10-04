@@ -41,7 +41,7 @@
               <h2 class="text-left rest-name"><u><%= restaurant.name.first(60) %></u></h2>
             <!-- begins contains image and desc -->
               <div class="d-flex">
-                <!-- Image -->
+          <!-- Image -->
                 <%= cl_image_tag(restaurant.photo.key, :transformation=>[
                   {height: 160, width: 240, crop: :fill},
                   {:radius=>12}]) %>
